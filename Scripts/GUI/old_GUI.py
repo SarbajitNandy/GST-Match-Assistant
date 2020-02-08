@@ -19,10 +19,8 @@ class Ui_MainWindow(object):
         self.file2Header = None
         self.file2Sheet = None
 
-        self.outFilePath = None
 
-        self.myExcel : pd.ExcelFile = None
-        self.givenExcel: pd.ExcelFile = None
+        self.outFilePath = None
 
         self.myVouchar: pd.DataFrame = None
         self.givenVouchar: pd.DataFrame = None
@@ -60,30 +58,26 @@ class Ui_MainWindow(object):
         self.browseFile2 = QtWidgets.QPushButton(self.centralwidget)
         self.browseFile2.setGeometry(QtCore.QRect(250, 130, 75, 23))
         self.browseFile2.setObjectName("browseFile2")
-
-        # header list details
         self.headerFile1 = QtWidgets.QLabel(self.centralwidget)
-        self.headerFile1.setGeometry(QtCore.QRect(500, 20, 111, 16))
+        self.headerFile1.setGeometry(QtCore.QRect(370, 20, 111, 16))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.headerFile1.setFont(font)
         self.headerFile1.setTextFormat(QtCore.Qt.RichText)
         self.headerFile1.setObjectName("headerFile1")
         self.headerFile2 = QtWidgets.QLabel(self.centralwidget)
-        self.headerFile2.setGeometry(QtCore.QRect(500, 100, 111, 16))
+        self.headerFile2.setGeometry(QtCore.QRect(370, 100, 111, 16))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.headerFile2.setFont(font)
         self.headerFile2.setTextFormat(QtCore.Qt.RichText)
         self.headerFile2.setObjectName("headerFile2")
         self.headerLineFile1 = QtWidgets.QLineEdit(self.centralwidget)
-        self.headerLineFile1.setGeometry(QtCore.QRect(500, 50, 113, 20))
+        self.headerLineFile1.setGeometry(QtCore.QRect(370, 50, 113, 20))
         self.headerLineFile1.setObjectName("headerLineFile1")
         self.headerLineFile2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.headerLineFile2.setGeometry(QtCore.QRect(500, 130, 113, 20))
+        self.headerLineFile2.setGeometry(QtCore.QRect(370, 130, 113, 20))
         self.headerLineFile2.setObjectName("headerLineFile2")
-
-        # start button
         self.startProcess = QtWidgets.QPushButton(self.centralwidget)
         self.startProcess.setGeometry(QtCore.QRect(460, 300, 91, 41))
         self.startProcess.setObjectName("startProcess")
@@ -102,32 +96,24 @@ class Ui_MainWindow(object):
         self.progressBar1.setObjectName("progressBar1")
 
         # sheet lables
+        self.sheetName1 = QtWidgets.QLineEdit(self.centralwidget)
+        self.sheetName1.setGeometry(QtCore.QRect(500, 50, 113, 20))
+        self.sheetName1.setObjectName("sheetName1")
+        self.sheetName2 = QtWidgets.QLineEdit(self.centralwidget)
+        self.sheetName2.setGeometry(QtCore.QRect(500, 130, 113, 20))
+        self.sheetName2.setObjectName("sheetName2")
         self.lable_sheet1 = QtWidgets.QLabel(self.centralwidget)
-        self.lable_sheet1.setGeometry(QtCore.QRect(350, 20, 100, 16))
+        self.lable_sheet1.setGeometry(QtCore.QRect(500, 20, 100, 16))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.lable_sheet1.setFont(font)
         self.lable_sheet1.setObjectName("lable_sheet1")
         self.lable_sheet2 = QtWidgets.QLabel(self.centralwidget)
-        self.lable_sheet2.setGeometry(QtCore.QRect(350, 100, 100, 16))
+        self.lable_sheet2.setGeometry(QtCore.QRect(500, 100, 100, 16))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.lable_sheet2.setFont(font)
         self.lable_sheet2.setObjectName("lable_sheet2")
-
-        # combo box for sheet name
-        self.file1SheetName = QtWidgets.QComboBox(self.centralwidget)
-        self.file1SheetName.setGeometry(QtCore.QRect(350, 50, 120, 20))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.file1SheetName.setFont(font)
-        self.file1SheetName.setObjectName("file1SheetName")
-        self.file2SheetName = QtWidgets.QComboBox(self.centralwidget)
-        self.file2SheetName.setGeometry(QtCore.QRect(350, 130, 120, 20))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.file2SheetName.setFont(font)
-        self.file2SheetName.setObjectName("file2SheetName")
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -160,43 +146,37 @@ class Ui_MainWindow(object):
     def validation(n):
         return n and not (n == '')
 
-    def open_dialog_box(self):
-        fileName = QFileDialog.getOpenFileName()
-        return fileName[0]
-
     def click(self):
         print(self.compiledExp)
 
+
     def brwsFile1_handler(self):
-        self.file1Path = self.open_dialog_box()
-        self.lineFile1.setText(self.file1Path)
-        self.myExcel = self.read_file1()
+        file1Path = self.open_dialog_box()
+        self.lineFile1.setText(file1Path)
 
     def brwsFile2_handler(self):
-        self.file2Path = self.open_dialog_box()
-        self.lineFile2.setText(self.file2Path)
-        self.givenExcel = self.read_file2()
+        file2Path = self.open_dialog_box()
+        self.lineFile2.setText(file2Path)
 
     def startProcess_handler(self):
 
         def getPoint(n):
             return [ (i-1) for i in n ]
 
-        # self.file1Path = self.lineFile1.text()
-        # self.file2Path = self.lineFile2.text()
+        self.file1Path = self.lineFile1.text()
+        self.file2Path = self.lineFile2.text()
         self.outFilePath = '/'.join(self.file1Path.split("/")[0:-1]) +'/mergedFile.xlsx'
         header1 = self.headerLineFile1.text()
         header2 = self.headerLineFile2.text()
-        # self.file1Sheet = self.sheetName1.text().strip()
-        # self.file2Sheet = self.sheetName2.text().strip()
-        self.file1Sheet = self.file1SheetName.currentText()
-        self.file2Sheet = self.file2SheetName.currentText()
+        self.file1Sheet = self.sheetName1.text().strip()
+        self.file2Sheet = self.sheetName2.text().strip()
         try:
             self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
             self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
         except:
             print("Problem with file Header. Enter value correctly")
             return
+
 
         print(self.file1Path)
         print(self.file2Path)
@@ -206,11 +186,14 @@ class Ui_MainWindow(object):
         print(self.file1Sheet)
         print(self.file2Sheet)
 
-        # if self.validation(self.file2Sheet) and self.validation(self.file2Path) and self.validation(self.file2Sheet):
-        #     self.main()
-        # else:
-        #     print("Try again")
-        self.main()
+        if self.validation(self.file1Path) and self.validation(self.file2Sheet) and self.validation(self.file2Path) and self.validation(self.file2Sheet):
+            self.main()
+        else:
+            print("Try again")
+
+    def open_dialog_box(self):
+        fileName = QFileDialog.getOpenFileName()
+        return fileName[0]
 
     def init_button(self):
         self.browseFile1.clicked.connect(self.brwsFile1_handler)
@@ -230,17 +213,13 @@ class Ui_MainWindow(object):
 
     @staticmethod
     def spl(i):
-        print(i)
         i = str(i)
         try:
             val = Ui_MainWindow.compiledExp.search('/' + str(i) + '/').group()
             return re.search('\d+', val).group()
         except:
             if i != 'nan':
-                try:
-                    return re.search('\d+', i).group()
-                except:
-                    return i;
+                return re.search('\d+', i).group()
             return i
 
     @staticmethod
@@ -308,93 +287,52 @@ class Ui_MainWindow(object):
         return
 
     def format_invoice(self):
-        print(1)
         self.myVouchar["Invoice"] = [self.spl(i) for i in self.myVouchar["Invoice No."]]
-        print(2)
         self.givenVouchar["Invoice"] = [self.spl(i) for i in self.givenVouchar["Invoice details Invoice number"]]
         return
-
-    def read_file1(self):
-        self.file1SheetName.clear()
-        try:
-            print("reading " + self.file1Path)
-            file1 = pd.ExcelFile(self.file1Path)
-            for i in file1.sheet_names:
-                self.file1SheetName.addItem(i)
-            return file1
-        except:
-            print("Can't read file " + self.file1Path)
-            return
-
-    def read_file2(self):
-        self.file2SheetName.clear()
-        try:
-            print("reading " + self.file2Path)
-            file2 = pd.ExcelFile(self.file2Path)
-            for i in file2.sheet_names:
-                self.file2SheetName.addItem(i)
-            return file2
-        except:
-            print("Can't read file " + self.file2Path)
-            return
 
     def main(self):
         start = time.time()
 
-        mycols, gvcols = None, None
-        if self.myExcel:
+        print("reading " + self.file1Path)
+        with pd.ExcelFile(self.file1Path) as x1:
             mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
                       'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
-            try:
-                self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header)
-            except:
-                print("Can't open Excel file 1")
-                return
-        else:
-            print("myExcel is empty")
+            self.myVouchar = pd.read_excel(x1, self.file1Sheet, header=self.file1Header)
 
-
-        if self.givenExcel:
+        print("reading " + self.file2Path)
+        with pd.ExcelFile(self.file2Path) as x2:
             gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
                       'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
                       'Tax Amount State/UT tax (₹)']
-            try:
-                self.givenVouchar = pd.read_excel(self.givenExcel, self.file2Sheet, header=self.file2Header)
-            except:
-                print("Can't open Excel file 2")
-                return
-        else:
-            print("givenExcel is empty")
+            self.givenVouchar = pd.read_excel(x2, self.file2Sheet, header=self.file2Header)
 
-        if self.myExcel and self.givenExcel:
-            print("formatting columns")
-            self.myVouchar.columns, self.givenVouchar.columns = self.format_header()
+        print("formatting columns")
+        self.myVouchar.columns, self.givenVouchar.columns = self.format_header()
 
-            # Sanitary check of data
-            print("Data sanit")
-            self.data_sanit(mycols, gvcols)
+        # Sanitary check of data
+        print("Data sanit")
+        self.data_sanit(mycols, gvcols)
 
-            #  format invoice
-            print("format invoice no")
-            self.format_invoice()
+        #  format invoice
+        print("format invoice no")
+        self.format_invoice()
 
-            #  check columns
-            print("checking column names")
-            self.myVouchar.rename(columns={'GSTIN/UIN': 'GSTno.'}, inplace=True)
-            self.givenVouchar.rename(columns={'GSTIN of supplier': 'GSTno.'}, inplace=True)
+        #  check columns
+        print("checking column names")
+        self.myVouchar.rename(columns={'GSTIN/UIN': 'GSTno.'}, inplace=True)
+        self.givenVouchar.rename(columns={'GSTIN of supplier': 'GSTno.'}, inplace=True)
 
-            #  data join
-            print("merging two files")
-            self.mergedData = pd.merge(self.myVouchar, self.givenVouchar, on=['GSTno.', 'Invoice'], how='outer').fillna(0)
+        #  data join
+        print("merging two files")
+        self.mergedData = pd.merge(self.myVouchar, self.givenVouchar, on=['GSTno.', 'Invoice'], how='outer').fillna(0)
 
-            # match
-            print("finding for match")
-            self.match_work(self.mergedData)
-            # write into a file
-            print("output file path " + self.outFilePath )
-            self.mergedData.to_excel(self.outFilePath, sheet_name='Sheet1', engine='xlsxwriter')
-        else:
-            print("Process failed")
+        # match
+        print("finding for match")
+        self.match_work(self.mergedData)
+        # write into a file
+        print("output file path " + self.outFilePath )
+        self.mergedData.to_excel(self.outFilePath, sheet_name='Sheet1', engine='xlsxwriter')
         print("Process finished in : {0} secs".format(round(time.time() - start), 3))
 
 if __name__ == "__main__":
