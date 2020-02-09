@@ -177,7 +177,6 @@ class Ui_MainWindow(object):
             print("Problem with file Header. Enter value correctly")
             return
 
-
         print(self.file1Path)
         print(self.file2Path)
         print(self.outFilePath)

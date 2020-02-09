@@ -41,9 +41,9 @@ class Ui_MainWindow(object):
         self.myVouchar: pd.DataFrame = None
         self.givenVouchar: pd.DataFrame = None
         self.mergedData: pd.DataFrame = None
+        self.notMatched_myside: pd.DataFrame = None
+        self.notMatched_otherside: pd.DataFrame = None
 
-        # #Status view html
-        # self.statusViewHtml: str = None
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -284,10 +284,14 @@ class Ui_MainWindow(object):
             else:
                 return False
 
-    @staticmethod
-    def match_work(data):
+
+    def match_work(self):
         count = 0
         matchresult = []
+        data = self.mergedData
+        self.notMatched_myside = pd.DataFrame(columns=data.keys())
+        self.notMatched_otherside = pd.DataFrame(columns=data.keys())
+
         for i, j in data.iterrows():
             r: bool = True
             gst1, gst2 = j['Taxable Value'], j['Taxable Value (₹)']
@@ -308,6 +312,10 @@ class Ui_MainWindow(object):
                 matchresult.append("MATCHED")
             else:
                 matchresult.append("NOT MATCHED")
+                if int(gst1)==0 and int(igst1)==0 and int(cgst1)==0 and int(sgst1)==0:
+                    self.notMatched_otherside = self.notMatched_otherside.append(j, ignore_index=True)
+                elif int(gst2)==0 and int(igst2)==0 and int(cgst2)==0 and int(sgst2)==0:
+                    self.notMatched_myside = self.notMatched_myside.append(j, ignore_index=True)
 
         data['Result'] = matchresult
         print("Found match in {0}/{1}".format(count, len(matchresult)))
@@ -420,12 +428,19 @@ class Ui_MainWindow(object):
 
                 # match
                 self.normal_status("finding for match")
-                self.match_work(self.mergedData)
+                self.match_work()
                 self.success_status("Done")
+
+                # Creating excel writer
+                outFileWriter = pd.ExcelWriter(self.outFilePath, engine='xlsxwriter')
 
                 # write into a file
                 self.normal_status("Creating output file")
-                self.mergedData.to_excel(self.outFilePath, sheet_name='Sheet1', engine='xlsxwriter')
+                self.mergedData.to_excel(outFileWriter, sheet_name='All Data')
+                self.notMatched_myside.to_excel(outFileWriter, sheet_name="My Side")
+                self.notMatched_otherside.to_excel(outFileWriter, sheet_name="GST portal")
+                outFileWriter.save()
+
                 self.success_status("Done")
                 self.success_status("output file path {} ".format(self.outFilePath))
 
