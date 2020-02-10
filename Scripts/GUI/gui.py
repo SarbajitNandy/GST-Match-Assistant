@@ -2,9 +2,11 @@ import pandas as pd
 import re
 import time
 
+from Scripts.GUI.backEnd import Purchase_Sales_Match
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtCore import QThread;
 
 class ExcelReadException(Exception):
     demo = "Can not read {} successfully"
@@ -20,31 +22,7 @@ class MsgException(Exception):
     def __str__(self):
         return self.value
 
-class Ui_MainWindow(object):
-    compiledExp = re.compile('/[A-Z]?[0-9]+/')
-
-    def __int__(self):
-        # Details of file 1
-        self.file1Path = None
-        self.file1Header = None
-        self.file1Sheet = None
-
-        # details of file 2
-        self.file2Path = None
-        self.file2Header = None
-        self.file2Sheet = None
-
-        self.outFilePath = None
-
-        self.myExcel : pd.ExcelFile = None
-        self.givenExcel: pd.ExcelFile = None
-
-        self.myVouchar: pd.DataFrame = None
-        self.givenVouchar: pd.DataFrame = None
-        self.mergedData: pd.DataFrame = None
-        self.notMatched_myside: pd.DataFrame = None
-        self.notMatched_otherside: pd.DataFrame = None
-
+class Ui_MainWindow(Purchase_Sales_Match):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -211,25 +189,13 @@ class Ui_MainWindow(object):
             # print("Problem with file Header. Enter value correctly")
             raise MsgException("Header format error")
 
-        print(self.file1Path)
-        print(self.file2Path)
-        print(self.outFilePath)
-        print(self.file1Header)
-        print(self.file2Header)
-        print(self.file1Sheet)
-        print(self.file2Sheet)
-
-        # if self.validation(self.file2Sheet) and self.validation(self.file2Path) and self.validation(self.file2Sheet):
-        #     self.main()
-        # else:
-        #     print("Try again")
-
-        # try:
-        #     t = threading.Thread(target=self.main)
-        #     t.daemon = False
-        #     t.start()
-        # except Exception as e:
-        #     self.failure_status(str(e))
+        # print(self.file1Path)
+        # print(self.file2Path)
+        # print(self.outFilePath)
+        # print(self.file1Header)
+        # print(self.file2Header)
+        # print(self.file1Sheet)
+        # print(self.file2Sheet)
 
         self.main()
 
@@ -256,45 +222,6 @@ class Ui_MainWindow(object):
             <span style="color: red">{0}</span>
         """
         self.statusView.append(html.format(n))
-
-#     panda part
-    @staticmethod
-    def join(i):
-        si = list(i)
-        if len(si) >= 2:
-            for j in range(len(si)):
-                if ('Unnamed' in si[j]):
-                    del si[j]
-
-        return " ".join(si)
-
-    @staticmethod
-    def spl(i):
-        i = str(i)
-        try:
-            val = Ui_MainWindow.compiledExp.search('/' + str(i) + '/').group()
-            r = re.search('\d+', val).group()
-            return int(r)
-        except:
-            if i != 'nan':
-                try:
-                    r = re.search('\d+', i).group()
-                    return int(r)
-                except:
-                    return i;
-            return i
-
-    @staticmethod
-    def float_compare(a, b):
-        a, b = round(float(a)), round(float(b))
-        if a == b:
-            return True
-        else:
-            if abs(a - b) <= 1:
-                return True
-            else:
-                return False
-
 
     def match_work(self):
         count = 0
@@ -330,6 +257,8 @@ class Ui_MainWindow(object):
 
         data['Result'] = matchresult
         print("Found match in {0}/{1}".format(count, len(matchresult)))
+        rate = count*100/len(matchresult)
+        self.success_status("Matched: {}%".format(round(rate,2)))
         return
 
     def format_header(self):
@@ -368,20 +297,38 @@ class Ui_MainWindow(object):
 
     def read_file1(self):
         self.file1SheetName.clear()
-        # print("reading " + self.file1Path)
-        file1 = pd.ExcelFile(self.file1Path)
-        for i in file1.sheet_names:
-            self.file1SheetName.addItem(i)
-        return file1
+        try:
+            # print("reading " + self.file1Path)
+            file1 = pd.ExcelFile(self.file1Path)
+            for i in file1.sheet_names:
+                self.file1SheetName.addItem(i)
+            self.success_status("{} file is OK".format(self.file1Path))
+            return file1
+        except Exception as e:
+            self.failure_status(str(e))
+            self.file1Path=None
+            self.lineFile1.clear()
+            self.file1SheetName.clear()
+            return None
+
 
 
     def read_file2(self):
         self.file2SheetName.clear()
-        # print("reading " + self.file2Path)
-        file2 = pd.ExcelFile(self.file2Path)
-        for i in file2.sheet_names:
-            self.file2SheetName.addItem(i)
-        return file2
+
+        try:
+            # print("reading " + self.file2Path)
+            file2 = pd.ExcelFile(self.file2Path)
+            for i in file2.sheet_names:
+                self.file2SheetName.addItem(i)
+            self.success_status("{} file is OK".format(self.file2Path))
+            return file2
+        except Exception as e:
+            self.failure_status(str(e))
+            self.file2Path = None
+            self.lineFile2.clear()
+            self.file2SheetName.clear()
+            return None
 
 
     def main(self):
