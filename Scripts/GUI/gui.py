@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import time
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
@@ -207,8 +208,8 @@ class Ui_MainWindow(object):
             self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
             self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
         except:
-            print("Problem with file Header. Enter value correctly")
-            return
+            # print("Problem with file Header. Enter value correctly")
+            raise MsgException("Header format error")
 
         print(self.file1Path)
         print(self.file2Path)
@@ -222,6 +223,14 @@ class Ui_MainWindow(object):
         #     self.main()
         # else:
         #     print("Try again")
+
+        # try:
+        #     t = threading.Thread(target=self.main)
+        #     t.daemon = False
+        #     t.start()
+        # except Exception as e:
+        #     self.failure_status(str(e))
+
         self.main()
 
     def init_button(self):
@@ -264,11 +273,13 @@ class Ui_MainWindow(object):
         i = str(i)
         try:
             val = Ui_MainWindow.compiledExp.search('/' + str(i) + '/').group()
-            return re.search('\d+', val).group()
+            r = re.search('\d+', val).group()
+            return int(r)
         except:
             if i != 'nan':
                 try:
-                    return re.search('\d+', i).group()
+                    r = re.search('\d+', i).group()
+                    return int(r)
                 except:
                     return i;
             return i
@@ -324,15 +335,15 @@ class Ui_MainWindow(object):
     def format_header(self):
         try:
             mv, gv = self.myVouchar.keys(), self.givenVouchar.keys()
-            print(mv)
-            print(gv)
+            # print(mv)
+            # print(gv)
             m = [self.join(i)
                  for i in mv]
 
             g = [self.join(i)
                  for i in gv]
-            print(m)
-            print(g)
+            # print(m)
+            # print(g)
             return (m, g)
         except:
             raise MsgException("Wrong Header format")
@@ -357,7 +368,7 @@ class Ui_MainWindow(object):
 
     def read_file1(self):
         self.file1SheetName.clear()
-        print("reading " + self.file1Path)
+        # print("reading " + self.file1Path)
         file1 = pd.ExcelFile(self.file1Path)
         for i in file1.sheet_names:
             self.file1SheetName.addItem(i)
@@ -366,7 +377,7 @@ class Ui_MainWindow(object):
 
     def read_file2(self):
         self.file2SheetName.clear()
-        print("reading " + self.file2Path)
+        # print("reading " + self.file2Path)
         file2 = pd.ExcelFile(self.file2Path)
         for i in file2.sheet_names:
             self.file2SheetName.addItem(i)
@@ -374,8 +385,8 @@ class Ui_MainWindow(object):
 
 
     def main(self):
-        start = time.time()
         self.statusView.clear()
+        start = time.time()
         try:
             mycols, gvcols = None, None
             if self.myExcel:
