@@ -247,7 +247,7 @@ class Ui_MainWindow(Purchase_Sales_Match):
             mycols, gvcols = None, None
             if self.myExcel:
                 self.normal_status("Reading {}".format(self.file1Path))
-                mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
+                self.mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
                           'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
                 self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header)
                 self.success_status("file read successful, format OK")
@@ -258,7 +258,7 @@ class Ui_MainWindow(Purchase_Sales_Match):
 
             if self.givenExcel:
                 self.normal_status("Reading {}".format(self.file2Path))
-                gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
+                self.gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
                           'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
                           'Tax Amount State/UT tax (₹)']
                 self.givenVouchar = pd.read_excel(self.givenExcel, self.file2Sheet, header=self.file2Header)
@@ -274,7 +274,7 @@ class Ui_MainWindow(Purchase_Sales_Match):
 
                 # Sanitary check of data
                 self.normal_status("Sanitizing Data")
-                self.data_sanit(mycols, gvcols)
+                self.data_sanit()
                 self.success_status("Done")
 
                 #  format invoice
@@ -286,6 +286,7 @@ class Ui_MainWindow(Purchase_Sales_Match):
                 self.normal_status("checking columns")
                 self.myVouchar.rename(columns={'GSTIN/UIN': 'GSTno.'}, inplace=True)
                 self.givenVouchar.rename(columns={'GSTIN of supplier': 'GSTno.'}, inplace=True)
+                self.mycols[1] = self.gvcols[0] = "GSTno."
                 self.success_status("Done")
 
                 #  data join

@@ -29,6 +29,10 @@ class Purchase_Sales_Match(object):
         self.notMatched_myside: pd.DataFrame = None
         self.notMatched_otherside: pd.DataFrame = None
 
+        # columns values
+        self.mycols = None
+        self.gvcols = None
+
     #     panda part
     @staticmethod
     def validation(n):
@@ -87,14 +91,14 @@ class Purchase_Sales_Match(object):
         except:
             raise MsgException("Wrong Header format")
 
-    def data_sanit(self, mycols, gvcols):
+    def data_sanit(self):
         mvNew, gvNew = self.myVouchar.keys(), self.givenVouchar.keys()
         for i in mvNew:
-            if i not in mycols:
+            if i not in self.mycols:
                 del self.myVouchar[i]
 
         for i in gvNew:
-            if i not in gvcols:
+            if i not in self.gvcols:
                 del self.givenVouchar[i]
         return
 
@@ -108,8 +112,14 @@ class Purchase_Sales_Match(object):
         count = 0
         matchresult = []
         data = self.mergedData
-        self.notMatched_myside = pd.DataFrame(columns=data.keys())
-        self.notMatched_otherside = pd.DataFrame(columns=data.keys())
+        notMatched_myside = {}
+        notMatched_otherside = {}
+
+        for i in self.mycols:
+            notMatched_myside[i]=[]
+
+        for i in self.gvcols:
+            notMatched_otherside[i]=[]
 
         for i, j in data.iterrows():
             r: bool = True
@@ -132,14 +142,20 @@ class Purchase_Sales_Match(object):
             else:
                 matchresult.append("NOT MATCHED")
                 if int(gst1)==0 and int(igst1)==0 and int(cgst1)==0 and int(sgst1)==0:
-                    self.notMatched_otherside = self.notMatched_otherside.append(j, ignore_index=True)
+                    for k in self.gvcols:
+                        notMatched_otherside[k].append(j[k])
                 elif int(gst2)==0 and int(igst2)==0 and int(cgst2)==0 and int(sgst2)==0:
-                    self.notMatched_myside = self.notMatched_myside.append(j, ignore_index=True)
+                    for k in self.mycols:
+                        notMatched_myside[k].append(j[k])
 
         data['Result'] = matchresult
         print("Found match in {0}/{1}".format(count, len(matchresult)))
         rate = count*100/len(matchresult)
         self.success_status("Matched: {}%".format(round(rate,2)))
+        print(notMatched_myside)
+        print(notMatched_otherside)
+        self.notMatched_myside = pd.DataFrame(notMatched_myside)
+        self.notMatched_otherside = pd.DataFrame(notMatched_otherside)
         return
 
 
