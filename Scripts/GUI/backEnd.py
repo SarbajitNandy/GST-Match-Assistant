@@ -30,8 +30,11 @@ class Purchase_Sales_Match(object):
         self.notMatched_otherside: pd.DataFrame = None
 
         # columns values
-        self.mycols = None
-        self.gvcols = None
+        self.mycols =  ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
+                          'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
+        self.gvcols =['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
+                          'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
+                          'Tax Amount State/UT tax (₹)']
 
     #     panda part
     @staticmethod
@@ -152,8 +155,6 @@ class Purchase_Sales_Match(object):
         print("Found match in {0}/{1}".format(count, len(matchresult)))
         rate = count*100/len(matchresult)
         self.success_status("Matched: {}%".format(round(rate,2)))
-        print(notMatched_myside)
-        print(notMatched_otherside)
         self.notMatched_myside = pd.DataFrame(notMatched_myside)
         self.notMatched_otherside = pd.DataFrame(notMatched_otherside)
         return

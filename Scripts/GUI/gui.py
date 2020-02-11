@@ -12,6 +12,9 @@ from Scripts.Exceptions import *;
 
 class Ui_MainWindow(Purchase_Sales_Match):
 
+    def __init__(self):
+        Purchase_Sales_Match.__int__(self)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(620, 400)
@@ -172,14 +175,6 @@ class Ui_MainWindow(Purchase_Sales_Match):
             # print("Problem with file Header. Enter value correctly")
             raise MsgException("Header format error")
 
-        # print(self.file1Path)
-        # print(self.file2Path)
-        # print(self.outFilePath)
-        # print(self.file1Header)
-        # print(self.file2Header)
-        # print(self.file1Sheet)
-        # print(self.file2Sheet)
-
         self.main()
 
     def init_button(self):
@@ -247,8 +242,8 @@ class Ui_MainWindow(Purchase_Sales_Match):
             mycols, gvcols = None, None
             if self.myExcel:
                 self.normal_status("Reading {}".format(self.file1Path))
-                self.mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
-                          'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
+                # self.mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
+                #           'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
                 self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header)
                 self.success_status("file read successful, format OK")
             else:
@@ -258,9 +253,9 @@ class Ui_MainWindow(Purchase_Sales_Match):
 
             if self.givenExcel:
                 self.normal_status("Reading {}".format(self.file2Path))
-                self.gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
-                          'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
-                          'Tax Amount State/UT tax (₹)']
+                # self.gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
+                #           'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
+                #           'Tax Amount State/UT tax (₹)']
                 self.givenVouchar = pd.read_excel(self.givenExcel, self.file2Sheet, header=self.file2Header)
                 self.success_status("file read successful, format OK")
             else:
