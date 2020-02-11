@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d97a767e-9384-47f8-ad95-5f742ad246ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TallyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TallyProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Purchas_Sales_Match.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet1/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet1/mergedFile.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet2/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet2/mergedFile.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +34,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Scripts/GUI" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -181,22 +180,30 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1581336979949">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="484" y="161" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581340858687">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="484" y="161" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1581340858687" />
+    <state width="1343" height="175" key="GridCell.Tab.0.bottom" timestamp="1581401831626">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1581336979949" />
-    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1581336979949">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1343" height="175" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
+    <state width="1343" height="175" key="GridCell.Tab.0.center" timestamp="1581401831626">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1581336979949" />
-    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1581336979948">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1343" height="175" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
+    <state width="1343" height="175" key="GridCell.Tab.0.left" timestamp="1581401831625">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1581336979948" />
-    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1581336979949">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1343" height="175" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1581401831625" />
+    <state width="1343" height="175" key="GridCell.Tab.0.right" timestamp="1581401831626">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1581336979949" />
+    <state width="1343" height="175" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
     <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1581260028916">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -213,18 +220,20 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1345" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1581260028916" />
-    <state x="212" y="46" width="998" height="708" key="SettingsEditor" timestamp="1581182598151">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="188" y="27" width="998" height="730" key="SettingsEditor" timestamp="1581343658768">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="212" y="46" width="998" height="708" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1581182598151" />
+    <state x="188" y="27" width="998" height="730" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1581343658768" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1581336458469">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1581336458469" />
-    <state x="502" y="150" key="com.intellij.ide.util.TipDialog" timestamp="1581333495708">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="314" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1581401224972">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="502" y="150" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1581333495708" />
+    <state x="314" y="186" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1581401224972" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1581333600523">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

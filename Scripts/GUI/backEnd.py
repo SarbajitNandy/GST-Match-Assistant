@@ -2,6 +2,8 @@ import pandas as pd
 import re
 import time
 
+from Scripts.Exceptions import *;
+
 class Purchase_Sales_Match(object):
     compiledExp = re.compile('/[A-Z]?[0-9]+/')
 
@@ -28,6 +30,10 @@ class Purchase_Sales_Match(object):
         self.notMatched_otherside: pd.DataFrame = None
 
     #     panda part
+    @staticmethod
+    def validation(n):
+        return n and not (n == '')
+
     @staticmethod
     def join(i):
         si = list(i)
@@ -64,6 +70,79 @@ class Purchase_Sales_Match(object):
                 return True
             else:
                 return False
+
+    def format_header(self):
+        try:
+            mv, gv = self.myVouchar.keys(), self.givenVouchar.keys()
+            # print(mv)
+            # print(gv)
+            m = [self.join(i)
+                 for i in mv]
+
+            g = [self.join(i)
+                 for i in gv]
+            # print(m)
+            # print(g)
+            return (m, g)
+        except:
+            raise MsgException("Wrong Header format")
+
+    def data_sanit(self, mycols, gvcols):
+        mvNew, gvNew = self.myVouchar.keys(), self.givenVouchar.keys()
+        for i in mvNew:
+            if i not in mycols:
+                del self.myVouchar[i]
+
+        for i in gvNew:
+            if i not in gvcols:
+                del self.givenVouchar[i]
+        return
+
+
+    def format_invoice(self):
+        self.myVouchar["Invoice"] = [self.spl(i) for i in self.myVouchar["Invoice No."]]
+        self.givenVouchar["Invoice"] = [self.spl(i) for i in self.givenVouchar["Invoice details Invoice number"]]
+        return
+
+    def match_work(self):
+        count = 0
+        matchresult = []
+        data = self.mergedData
+        self.notMatched_myside = pd.DataFrame(columns=data.keys())
+        self.notMatched_otherside = pd.DataFrame(columns=data.keys())
+
+        for i, j in data.iterrows():
+            r: bool = True
+            gst1, gst2 = j['Taxable Value'], j['Taxable Value (₹)']
+            igst1, igst2 = j['Integrated Tax Amount'], j['Tax Amount Integrated Tax  (₹)']
+            cgst1, cgst2 = j['Central Tax Amount'], j['Tax Amount Central Tax (₹)']
+            sgst1, sgst2 = j['State Tax Amount'], j['Tax Amount State/UT tax (₹)']
+
+            if not Purchase_Sales_Match.float_compare(gst1, gst2):
+                r = False
+            if not Purchase_Sales_Match.float_compare(igst1, igst2):
+                r = False
+            if not Purchase_Sales_Match.float_compare(sgst1, sgst2):
+                r = False
+            if not Purchase_Sales_Match.float_compare(cgst1, cgst2):
+                r = False
+            if r:
+                count += 1
+                matchresult.append("MATCHED")
+            else:
+                matchresult.append("NOT MATCHED")
+                if int(gst1)==0 and int(igst1)==0 and int(cgst1)==0 and int(sgst1)==0:
+                    self.notMatched_otherside = self.notMatched_otherside.append(j, ignore_index=True)
+                elif int(gst2)==0 and int(igst2)==0 and int(cgst2)==0 and int(sgst2)==0:
+                    self.notMatched_myside = self.notMatched_myside.append(j, ignore_index=True)
+
+        data['Result'] = matchresult
+        print("Found match in {0}/{1}".format(count, len(matchresult)))
+        rate = count*100/len(matchresult)
+        self.success_status("Matched: {}%".format(round(rate,2)))
+        return
+
+
 
 
 
