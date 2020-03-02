@@ -5,6 +5,8 @@ import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 
+from Scripts.GUI.tableWidget import table_widget
+
 class Ui_MainWindow(object):
     compiledExp = re.compile('/[A-Z]?[0-9]+/')
 
@@ -28,6 +30,7 @@ class Ui_MainWindow(object):
 
 
     def setupUi(self, MainWindow):
+        self.mainWindow = MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(620, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -115,6 +118,14 @@ class Ui_MainWindow(object):
         self.lable_sheet2.setFont(font)
         self.lable_sheet2.setObjectName("lable_sheet2")
 
+        # table widget
+        self.matchWidget = QtWidgets.QWidget(MainWindow)
+        self.table1 = table_widget()
+        self.table1.xcor=self.table1.ycor = 100
+        self.table1.width = 100
+        self.table1.height = 150
+        self.table1.setupUi(self.matchWidget)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 563, 21))
@@ -159,36 +170,37 @@ class Ui_MainWindow(object):
         self.lineFile2.setText(file2Path)
 
     def startProcess_handler(self):
+        self.mainWindow.setCentralWidget(self.matchWidget)
 
-        def getPoint(n):
-            return [ (i-1) for i in n ]
-
-        self.file1Path = self.lineFile1.text()
-        self.file2Path = self.lineFile2.text()
-        self.outFilePath = '/'.join(self.file1Path.split("/")[0:-1]) +'/mergedFile.xlsx'
-        header1 = self.headerLineFile1.text()
-        header2 = self.headerLineFile2.text()
-        self.file1Sheet = self.sheetName1.text().strip()
-        self.file2Sheet = self.sheetName2.text().strip()
-        try:
-            self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
-            self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
-        except:
-            print("Problem with file Header. Enter value correctly")
-            return
-
-        print(self.file1Path)
-        print(self.file2Path)
-        print(self.outFilePath)
-        print(self.file1Header)
-        print(self.file2Header)
-        print(self.file1Sheet)
-        print(self.file2Sheet)
-
-        if self.validation(self.file1Path) and self.validation(self.file2Sheet) and self.validation(self.file2Path) and self.validation(self.file2Sheet):
-            self.main()
-        else:
-            print("Try again")
+        # def getPoint(n):
+        #     return [ (i-1) for i in n ]
+        #
+        # self.file1Path = self.lineFile1.text()
+        # self.file2Path = self.lineFile2.text()
+        # self.outFilePath = '/'.join(self.file1Path.split("/")[0:-1]) +'/mergedFile.xlsx'
+        # header1 = self.headerLineFile1.text()
+        # header2 = self.headerLineFile2.text()
+        # self.file1Sheet = self.sheetName1.text().strip()
+        # self.file2Sheet = self.sheetName2.text().strip()
+        # try:
+        #     self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
+        #     self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
+        # except:
+        #     print("Problem with file Header. Enter value correctly")
+        #     return
+        #
+        # print(self.file1Path)
+        # print(self.file2Path)
+        # print(self.outFilePath)
+        # print(self.file1Header)
+        # print(self.file2Header)
+        # print(self.file1Sheet)
+        # print(self.file2Sheet)
+        #
+        # if self.validation(self.file1Path) and self.validation(self.file2Sheet) and self.validation(self.file2Path) and self.validation(self.file2Sheet):
+        #     self.main()
+        # else:
+        #     print("Try again")
 
     def open_dialog_box(self):
         fileName = QFileDialog.getOpenFileName()

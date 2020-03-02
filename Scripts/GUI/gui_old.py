@@ -19,7 +19,7 @@ class MsgException(Exception):
     def __str__(self):
         return self.value
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtWidgets.QMainWindow):
     compiledExp = re.compile('/[A-Z]?[0-9]+/')
 
     def __int__(self):
@@ -45,10 +45,10 @@ class Ui_MainWindow(object):
         # #Status view html
         # self.statusViewHtml: str = None
 
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(620, 400)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self):
+        self.setObjectName("MainWindow")
+        self.resize(620, 400)
+        self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.file1 = QtWidgets.QLabel(self.centralwidget)
         self.file1.setGeometry(QtCore.QRect(10, 20, 171, 21))
@@ -140,23 +140,23 @@ class Ui_MainWindow(object):
         self.statusView.setObjectName("statusView")
         self.statusView.setReadOnly(True)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 563, 21))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(self)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        self.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
 
         self.init_button()
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.file1.setText(_translate("MainWindow", "Import file from Tally"))
         self.file2.setText(_translate("MainWindow", "Import file from GST Portal"))
         self.browseFile1.setText(_translate("MainWindow", "Browse"))
@@ -437,10 +437,10 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    # self = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui.setupUi()
+    ui.show()
     sys.exit(app.exec_())
 
 """

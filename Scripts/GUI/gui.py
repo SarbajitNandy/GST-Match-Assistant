@@ -10,10 +10,11 @@ from PyQt5.QtCore import QThread;
 
 from Scripts.Exceptions import *;
 
-class Ui_MainWindow(Purchase_Sales_Match):
+class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
     def __init__(self):
         Purchase_Sales_Match.__int__(self)
+        QThread.__init__(self)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -74,6 +75,12 @@ class Ui_MainWindow(Purchase_Sales_Match):
         self.startProcess.setGeometry(QtCore.QRect(490, 300, 91, 41))
         self.startProcess.setObjectName("startProcess")
 
+        # File write button
+        self.download = QtWidgets.QPushButton(self.centralwidget)
+        self.download.setGeometry(QtCore.QRect(490, 350, 91, 41))
+        self.download.setObjectName("download")
+        self.download.setVisible(False)
+
 
         # sheet lables
         self.lable_sheet1 = QtWidgets.QLabel(self.centralwidget)
@@ -103,12 +110,28 @@ class Ui_MainWindow(Purchase_Sales_Match):
         self.file2SheetName.setFont(font)
         self.file2SheetName.setObjectName("file2SheetName")
 
-        # Status view
-        self.statusView = QtWidgets.QTextBrowser(self.centralwidget)
-        self.statusView.setEnabled(True)
-        self.statusView.setGeometry(QtCore.QRect(20, 230, 431, 111))
-        self.statusView.setObjectName("statusView")
-        self.statusView.setReadOnly(True)
+        # # Status view
+        # self.statusView = QtWidgets.QTextBrowser(self.centralwidget)
+        # self.statusView.setEnabled(True)
+        # self.statusView.setGeometry(QtCore.QRect(20, 230, 431, 111))
+        # self.statusView.setObjectName("statusView")
+        # self.statusView.setReadOnly(True)
+
+        # Progress bar
+        font = QtGui.QFont()
+        self.progressBar1 = QtWidgets.QProgressBar(self.centralwidget)
+        self.progressBar1.setEnabled(True)
+        self.progressBar1.setGeometry(QtCore.QRect(20, 310, 411, 23))
+        self.progressBar1.setMouseTracking(False)
+        self.progressBar1.setAutoFillBackground(False)
+        # self.progressBar1.setProperty("value", 0)
+        self.progressBar1.setValue(0)
+        self.progressBar1.setTextVisible(True)
+        self.progressBar1.setOrientation(QtCore.Qt.Horizontal)
+        self.progressBar1.setInvertedAppearance(False)
+        self.progressBar1.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
+        self.progressBar1.setObjectName("progressBar1")
+        self.progressBar1.setMaximum(100)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -134,6 +157,7 @@ class Ui_MainWindow(Purchase_Sales_Match):
         self.headerFile1.setText(_translate("MainWindow", "Header value(s)"))
         self.headerFile2.setText(_translate("MainWindow", "Header value(s)"))
         self.startProcess.setText(_translate("MainWindow", "Start"))
+        self.download.setText(_translate("MainWindow", "Download"))
         self.lable_sheet1.setText(_translate("MainWindow", "Sheet Name"))
         self.lable_sheet2.setText(_translate("MainWindow", "Sheet Name"))
 
@@ -153,6 +177,12 @@ class Ui_MainWindow(Purchase_Sales_Match):
         self.file2Path = self.open_dialog_box()
         self.lineFile2.setText(self.file2Path)
         self.givenExcel = self.read_file2()
+
+    def run(self):
+        print("run process")
+        self.main()
+        # self.download_work_handler()
+        print("run finished")
 
     def startProcess_handler(self):
 
@@ -175,31 +205,25 @@ class Ui_MainWindow(Purchase_Sales_Match):
             # print("Problem with file Header. Enter value correctly")
             raise MsgException("Header format error")
 
-        self.main()
+        self.start()
+        print("StartBtn Finished")
+
+    def download_work_handler(self):
+        print("download work handler started")
+        while (not self.Done_with_match):
+            continue
+        self.download.setVisible(True)
+        # self.download.setDisabled(False)
+        print("download work handler finished")
+
+    def download_work(self):
+        self.write_Result_to_excel()
 
     def init_button(self):
         self.browseFile1.clicked.connect(self.brwsFile1_handler)
         self.browseFile2.clicked.connect(self.brwsFile2_handler)
         self.startProcess.clicked.connect(self.startProcess_handler)
-
-#     Fail-safe status
-    def normal_status(self, n:str):
-        html = """
-           <span>{}</span>
-        """
-        self.statusView.append(html.format(n))
-
-    def success_status(self, n:str):
-        html = """
-            <span style="color: green">{}</span>
-        """
-        self.statusView.append(html.format(n))
-
-    def failure_status(self, n:str):
-        html = """
-            <span style="color: red">{0}</span>
-        """
-        self.statusView.append(html.format(n))
+        self.download.clicked.connect(self.download_work)
 
     def read_file1(self):
         self.file1SheetName.clear()
@@ -208,10 +232,10 @@ class Ui_MainWindow(Purchase_Sales_Match):
             file1 = pd.ExcelFile(self.file1Path)
             for i in file1.sheet_names:
                 self.file1SheetName.addItem(i)
-            self.success_status("{} file is OK".format(self.file1Path))
+            # self.success_status("{} file is OK".format(self.file1Path))
             return file1
         except Exception as e:
-            self.failure_status(str(e))
+            # self.failure_status(str(e))
             self.file1Path=None
             self.lineFile1.clear()
             self.file1SheetName.clear()
@@ -225,92 +249,16 @@ class Ui_MainWindow(Purchase_Sales_Match):
             file2 = pd.ExcelFile(self.file2Path)
             for i in file2.sheet_names:
                 self.file2SheetName.addItem(i)
-            self.success_status("{} file is OK".format(self.file2Path))
+            # self.success_status("{} file is OK".format(self.file2Path))
             return file2
         except Exception as e:
-            self.failure_status(str(e))
+            # self.failure_status(str(e))
             self.file2Path = None
             self.lineFile2.clear()
             self.file2SheetName.clear()
             return None
 
 
-    def main(self):
-        self.statusView.clear()
-        start = time.time()
-        try:
-            mycols, gvcols = None, None
-            if self.myExcel:
-                self.normal_status("Reading {}".format(self.file1Path))
-                # self.mycols = ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
-                #           'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
-                self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header)
-                self.success_status("file read successful, format OK")
-            else:
-                # raise exception
-                raise ExcelReadException(self.file1Path)
-
-
-            if self.givenExcel:
-                self.normal_status("Reading {}".format(self.file2Path))
-                # self.gvcols = ['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
-                #           'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
-                #           'Tax Amount State/UT tax (₹)']
-                self.givenVouchar = pd.read_excel(self.givenExcel, self.file2Sheet, header=self.file2Header)
-                self.success_status("file read successful, format OK")
-            else:
-                #raise exception
-                raise ExcelReadException(self.file2Path)
-
-            if self.myExcel and self.givenExcel:
-                self.normal_status("formatting columns")
-                self.myVouchar.columns, self.givenVouchar.columns = self.format_header()
-                self.success_status("Done")
-
-                # Sanitary check of data
-                self.normal_status("Sanitizing Data")
-                self.data_sanit()
-                self.success_status("Done")
-
-                #  format invoice
-                self.normal_status("formatting invoice")
-                self.format_invoice()
-                self.success_status("Done")
-
-                #  check columns
-                self.normal_status("checking columns")
-                self.myVouchar.rename(columns={'GSTIN/UIN': 'GSTno.'}, inplace=True)
-                self.givenVouchar.rename(columns={'GSTIN of supplier': 'GSTno.'}, inplace=True)
-                self.mycols[1] = self.gvcols[0] = "GSTno."
-                self.success_status("Done")
-
-                #  data join
-                self.normal_status("merging two files")
-                self.mergedData = pd.merge(self.myVouchar, self.givenVouchar, on=['GSTno.', 'Invoice'], how='outer').fillna(0)
-                self.success_status("Done")
-
-                # match
-                self.normal_status("finding for match")
-                self.match_work()
-                self.success_status("Done")
-
-                # Creating excel writer
-                outFileWriter = pd.ExcelWriter(self.outFilePath, engine='xlsxwriter')
-
-                # write into a file
-                self.normal_status("Creating output file")
-                self.mergedData.to_excel(outFileWriter, sheet_name='All Data')
-                self.notMatched_myside.to_excel(outFileWriter, sheet_name="My Side")
-                self.notMatched_otherside.to_excel(outFileWriter, sheet_name="GST portal")
-                outFileWriter.save()
-
-                self.success_status("Done")
-                self.success_status("output file path {} ".format(self.outFilePath))
-
-        except Exception as e:
-            self.failure_status(str(e))
-            self.failure_status("Main Process failed")
-        print("Process finished in : {0} secs".format(round(time.time() - start), 3))
 
 if __name__ == "__main__":
     import sys
