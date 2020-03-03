@@ -1,8 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QRect, Qt
-from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem,  QApplication, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel
+from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem,  QApplication, QHBoxLayout, QMainWindow, QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget
 import pandas as pd
 import sys
+from Scripts.GUI.ShowDetailsWidget import show_details
 
 class table_widget(QTableWidget):
 
@@ -40,8 +41,13 @@ class table_widget(QTableWidget):
         print("clicked")
 
     def select_rows(self, row):
-        return tuple(self.item(row, col).text() for col in range(self.columnCount()))
+        # return tuple(self.item(row, col).text() for col in range(self.columnCount()))
+        d = {}
+        for i,col in zip(self.key,range(self.columnCount())):
+            j = self.item(row, col).text()
+            d[i]=j
 
+        return d
 
     def delete_row(self, row):
         print(row)
@@ -57,93 +63,112 @@ class table_widget(QTableWidget):
             for row in range(self.rowCount()):
                 match = False
                 item = self.item(row, column_index)
-                print("item")
+                # print("item")
                 if ( filter_text.lower() in item.text().lower()):
-                    print(row)
+                    # print(row)
                     match = True
                 self.setRowHidden(row, not match)
         except Exception as e:
             print(str(e))
 
-if __name__ == "__main__":
-    def student_item_clicked(row, col):
-        print(row, col)
-        name, dept = student_details.select_rows(row)
-        print(name, dept)
-        left_name_value.setText(name)
-        left_dept_value.setText(dept)
-
-
-    def dept_item_clicked(row, col):
-        print(row, col)
-
-
-    def filter():
-        text = filter_line.currentText()
-        # print(text)
-        if text == 'Select all':
-            text = ''
-        student_details.filter_rows(text)
-        dept_details.filter_rows(text)
-
-
-    app = QApplication(sys.argv)
-    main = QDialog()
-
-    student_details = table_widget()
-    dept_details = table_widget()
-
-    # take two dataframes
-    s1 = [
-        { 'name':"Sarbajit Nandy", "dept": "CSE"},
-        { 'name':'Shalmoli Neogi', "dept": "CSE"},
-        { 'name':"Shuvankar Roy", "dept": "CSE"},
-        { 'name':"Supriya Kundu", "dept": "CSE"}
-    ]
-    d1 = pd.DataFrame(s1)
-
-    s2 = [
-        {'name':'Sarbajit Nandy', 'dept':'CSE', 'hod':'SST'},
-        { 'name':'Shalmoli Neogi', 'dept':'IT', 'hod':'ABC'},
-        { 'name': 'Supriya Kundu', 'dept':'ECE', 'hod':'XYZ'},
-    ]
-    d2 = pd.DataFrame(s2)
-
-    student_details.fill_Data(d1)
-    student_details.cellClicked.connect(student_item_clicked)
-    dept_details.fill_Data(d2)
-    dept_details.cellClicked.connect(dept_item_clicked)
-
-    filter_line = QComboBox()
-
-    keys = pd.Series(["Select all"]).append(d1['name']).append(d2['name'])
-    keys = keys.drop_duplicates()
-    for i in keys:
-        filter_line.addItem(i)
-
-    filter_line.currentTextChanged.connect(filter)
-
-    # show details block starts
-    # for left side
-    left_name = QLabel("Name")
-    left_name_value = QLabel()
-
-    left_dept = QLabel("Department")
-    left_dept_value = QLabel()
-
-    gBox = QGridLayout()
-
-    gBox.addWidget(student_details, 0,0)
-    gBox.addWidget(dept_details, 0,1)
-    gBox.addWidget(filter_line, 1,0)
-    gBox.addWidget(left_name, 2,0)
-    gBox.addWidget(left_name_value, 2,1)
-    gBox.addWidget(left_dept, 3,0)
-    gBox.addWidget(left_dept_value, 3,1)
-
-
-    main.setLayout(gBox)
-
-    main.show()
-
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     def student_item_clicked(row, col):
+#         print(row, col)
+#         read_cols = [
+#             'GSTno.', 'Invoice No.', 'Particulars', 'Taxable Value', 'Integrated Tax Amount', 'Central Tax Amount', 'State Tax Amount'
+#         ]
+#         write_cols = [
+#             'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
+#         ]
+#         read_data = student_details.select_rows(row)
+#         write_data = {}
+#         for to, frm in zip(write_cols, read_cols):
+#             write_data[to] = read_data[frm]
+#         # print(write_data)
+#         left_side.set_data(write_data)
+#
+#
+#     def dept_item_clicked(row, col):
+#         print(row, col)
+#         read_cols = [
+#             'GSTno.', 'Invoice details Invoice number', 'Trade/Legal name of the Supplier', 'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)', 'Tax Amount State/UT tax (₹)'
+#         ]
+#         write_cols = [
+#             'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
+#         ]
+#         read_data = dept_details.select_rows(row)
+#         write_data = {}
+#         for to, frm in zip(write_cols, read_cols):
+#             write_data[to] = read_data[frm]
+#         # print(write_data)
+#         right_side.set_data(write_data)
+#
+#
+#     def filter():
+#         text = filter_line.currentText()
+#         # print(text)
+#         if text == 'Select all':
+#             text = ''
+#         student_details.filter_rows(text, on='GSTno.')
+#         dept_details.filter_rows(text, on='GSTno.')
+#
+#
+#     app = QApplication(sys.argv)
+#     main = QWidget()
+#
+#     student_details = table_widget()
+#     student_details.setFixedHeight(300)
+#     dept_details = table_widget()
+#     dept_details.setFixedHeight(300)
+#
+#     # take two dataframes
+#     file_path = 'D:\\Programs\\Py\\TallyProject\\media\\testSet5\\mergedFile.xlsx'
+#     file = pd.ExcelFile(file_path)
+#
+#     mySide = pd.read_excel(file, sheet_name='My Side')
+#     otherSide = pd.read_excel(file, sheet_name='GST portal')
+#
+#     student_details.fill_Data(mySide)
+#     student_details.cellClicked.connect(student_item_clicked)
+#     dept_details.fill_Data(otherSide)
+#     dept_details.cellClicked.connect(dept_item_clicked)
+#
+#     filter_line = QComboBox()
+#
+#     keys = pd.Series(["Select all"]).append(mySide['GSTno.']).append(otherSide['GSTno.'])
+#     keys = keys.drop_duplicates()
+#     for i in keys:
+#         filter_line.addItem(str(i))
+#
+#     filter_line.currentTextChanged.connect(filter)
+#
+#     # show details block starts
+#     # for left side
+#     # left_name = QLabel("Name")
+#     # left_name_value = QLabel()
+#     #
+#     # left_dept = QLabel("Department")
+#     # left_dept_value = QLabel()
+#     left_side = show_details()
+#     right_side = show_details()
+#
+#     left_side.setFixedHeight(150)
+#     left_side.setFixedWidth(400)
+#     right_side.setFixedHeight(150)
+#     right_side.setFixedWidth(400)
+#
+#     gBox = QGridLayout()
+#
+#     gBox.addWidget(filter_line, 0,1)
+#     gBox.addWidget(student_details, 1,0)
+#     gBox.addWidget(dept_details, 1,3)
+#     # gBox.addWidget(filter_line, 1,0)
+#     gBox.addWidget(left_side, 2,0)
+#     gBox.addWidget(right_side, 2,3)
+#
+#
+#     main.setLayout(gBox)
+#
+#     main.show()
+#
+#     sys.exit(app.exec_())
