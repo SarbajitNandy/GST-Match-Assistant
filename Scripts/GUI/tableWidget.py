@@ -12,6 +12,8 @@ class table_widget(QTableWidget):
         self.data : pd.DataFrame = None
         self.retranslateUi()
 
+        self.selected_row = -1
+
     def fill_Data(self, Data: pd.DataFrame ):
         row, column = Data.shape
         self.data = Data
@@ -47,13 +49,15 @@ class table_widget(QTableWidget):
             j = self.item(row, col).text()
             d[i]=j
 
+        self.selected_row=row
         return d
 
-    def delete_row(self, row):
-        print(row)
-        self.data = self.data.drop(self.data.index[row])
-        print(self.data)
-        # self.removeRow(row)
+    def delete_row(self):
+        if self.selected_row!= -1:
+            print(self.selected_row)
+            self.removeRow(self.selected_row)
+            return True
+        return False
 
     def filter_rows(self, filter_text, on='name'):
         print(filter_text)

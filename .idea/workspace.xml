@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d97a767e-9384-47f8-ad95-5f742ad246ec" name="Default Changelist" comment="">
+    <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/TallyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TallyProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,26 +24,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1XOf1jAffVG3sieilkRqXnzgY5i" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1Ywb4JcvnqA5dzsnqEiNyfeBshC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.DoMatch">
     <configuration name="DoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -56,69 +48,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ShowDetailsWidget" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tableWidget" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,9 +80,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.DoMatch" />
-        <item itemvalue="Python.tableWidget" />
-        <item itemvalue="Python.ShowDetailsWidget" />
-        <item itemvalue="Python.gui" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -163,89 +89,46 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d97a767e-9384-47f8-ad95-5f742ad246ec" name="Default Changelist" comment="" />
-      <created>1580921851382</created>
+      <changelist id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="" />
+      <created>1583856410623</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1580921851382</updated>
+      <updated>1583856410623</updated>
     </task>
     <servers />
   </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/Scripts" />
-    </ignored-roots>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="484" y="161" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581340858687">
-      <screen x="0" y="27" width="1366" height="741" />
-    </state>
-    <state x="484" y="161" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1581340858687" />
-    <state width="1345" height="208" key="GridCell.Tab.0.bottom" timestamp="1583248162295">
+    <state x="275" y="42" key="#Inspections" timestamp="1583860245747">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="208" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583248162295" />
-    <state width="1343" height="175" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
-    <state width="1345" height="208" key="GridCell.Tab.0.center" timestamp="1583248162295">
+    <state x="275" y="42" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1583860245747" />
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1583865615988">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="208" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1583248162295" />
-    <state width="1343" height="175" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
-    <state width="1345" height="208" key="GridCell.Tab.0.left" timestamp="1583248162294">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583865615988" />
+    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1583865615987">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="208" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1583248162294" />
-    <state width="1343" height="175" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1581401831625" />
-    <state width="1345" height="208" key="GridCell.Tab.0.right" timestamp="1583248162295">
+    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1583865615987" />
+    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1583865615987">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="208" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1583248162295" />
-    <state width="1343" height="175" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1581401831626" />
-    <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1583244722151">
+    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1583865615987" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1583865615987">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1583244722151" />
-    <state width="1345" height="238" key="GridCell.Tab.1.center" timestamp="1583244722151">
+    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1583865615987" />
+    <state x="123" y="39" width="998" height="726" key="SettingsEditor" timestamp="1583857139807">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1583244722151" />
-    <state width="1345" height="238" key="GridCell.Tab.1.left" timestamp="1583244722151">
+    <state x="123" y="39" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1583857139807" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1583858800778">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1583244722151" />
-    <state width="1345" height="238" key="GridCell.Tab.1.right" timestamp="1583244722151">
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1583858800778" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1583863886465">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1583244722151" />
-    <state x="263" y="43" width="998" height="730" key="SettingsEditor" timestamp="1581578705131">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="263" y="43" width="998" height="708" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1581578705131" />
-    <state x="188" y="27" width="998" height="730" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1581343658768" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1581336458469">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1581336458469" />
-    <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1582652069366">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="691" height="392" key="XDebugger.FullValuePopup/0.0.1366.768@0.0.1366.768" timestamp="1582652069366" />
-    <state x="502" y="150" key="com.intellij.ide.util.TipDialog" timestamp="1583240887083">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="502" y="150" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1583240887083" />
-    <state x="314" y="186" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1581401224972" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1583246475930">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1583246475930" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="self.notMatched_myside" language="Python" />
-        <watch expression="self.myVouchar" language="Python" />
-      </configuration>
-    </watches-manager>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1583863886465" />
   </component>
 </project>

@@ -1,5 +1,3 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem,  QApplication, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget
 import sys
 
@@ -93,7 +91,14 @@ class show_details(QWidget):
             self.set_igst(dict_data['igst'])
         except Exception as e:
             print(str(e))
-
+    def clear_data(self):
+        self.set_gstno('')
+        self.set_invoice('')
+        self.set_company('')
+        self.set_taxablevalue('')
+        self.set_cgst('')
+        self.set_sgst('')
+        self.set_igst('')
 
 # if __name__ == "__main__" :
 #     app = QApplication(sys.argv)
