@@ -141,73 +141,6 @@ class Purchase_Sales_Match(object):
         self.match_report = pd.DataFrame(matching_excel)
         return
 
-    def match_work(self):
-        count = 0
-        self.Done_with_match = False
-
-        matchresult = []
-        data = self.mergedData
-        notMatched_myside = {}
-        notMatched_otherside = {}
-        MatchedDetails = []
-
-        mycols = self.mycols.copy()
-        gvcols = self.gvcols.copy()
-        print("editing GST no")
-        mycols[1] = gvcols[0] = "GSTno."
-        print("editing done")
-
-        for i in mycols:
-            notMatched_myside[i]=[]
-
-        for i in gvcols:
-            notMatched_otherside[i]=[]
-
-        for i, j in data.iterrows():
-            r: bool = True
-            gst1, gst2 = j['Taxable Value'], j['Taxable Value (₹)']
-            igst1, igst2 = j['Integrated Tax Amount'], j['Tax Amount Integrated Tax  (₹)']
-            cgst1, cgst2 = j['Central Tax Amount'], j['Tax Amount Central Tax (₹)']
-            sgst1, sgst2 = j['State Tax Amount'], j['Tax Amount State/UT tax (₹)']
-
-            if not Purchase_Sales_Match.float_compare(gst1, gst2):
-                r = False
-            if not Purchase_Sales_Match.float_compare(igst1, igst2):
-                r = False
-            if not Purchase_Sales_Match.float_compare(sgst1, sgst2):
-                r = False
-            if not Purchase_Sales_Match.float_compare(cgst1, cgst2):
-                r = False
-            if r:
-                count += 1
-                matchresult.append("MATCHED")
-                MatchedDetails.append(j)
-            else:
-                matchresult.append("NOT MATCHED")
-                if int(gst1)==0 and int(igst1)==0 and int(cgst1)==0 and int(sgst1)==0:
-                    for k in gvcols:
-                        notMatched_otherside[k].append(j[k])
-                elif int(gst2)==0 and int(igst2)==0 and int(cgst2)==0 and int(sgst2)==0:
-                    for k in mycols:
-                        notMatched_myside[k].append(j[k])
-                else:
-                    for k in gvcols:
-                        notMatched_otherside[k].append(j[k])
-
-                    for k in mycols:
-                        notMatched_myside[k].append(j[k])
-
-
-        data['Result'] = matchresult
-        print("Found match in {0}/{1}".format(count, len(matchresult)))
-        rate = count*100/len(matchresult)
-        print("Matched: {}%".format(round(rate,2)))
-        self.MatchedDetails = pd.DataFrame(MatchedDetails)
-        self.notMatched_myside = pd.DataFrame(notMatched_myside)
-        self.notMatched_otherside = pd.DataFrame(notMatched_otherside)
-        self.Done_with_match = True
-        return
-
     # def attach(self,left, right):
     #     l = left.append(right)
     #     # print(l)
@@ -309,83 +242,38 @@ class Purchase_Sales_Match(object):
         self.myVouchar['type'] = mv
         self.givenVouchar['type'] = gv
 
-    def main(self):
-        start = time.time()
-        self.Done_with_match = False
-        try:
-            if self.myExcel:
-                self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header).fillna(0)
-            else:
-                # raise exception
-                raise ExcelReadException(self.file1Path)
 
+    def combine_bill_mySide(self):
+        # Combine separate bills in GST side
+        newVouchar = self.myVouchar.groupby(['GSTno.', 'Invoice', 'type'])[
+            [
+                'Taxable Value',
+                'Integrated Tax Amount',
+                'Central Tax Amount',
+                'State Tax Amount'
+            ]
+        ].transform('sum')
 
-            if self.givenExcel:
-                self.givenVouchar = pd.read_excel(self.givenExcel, self.file2Sheet, header=self.file2Header).fillna(0)
-            else:
-                #raise exception
-                raise ExcelReadException(self.file2Path)
+        for i in newVouchar.keys():
+            self.myVouchar[i] = newVouchar[i]
 
-            if self.myExcel and self.givenExcel:
-                self.myVouchar.columns, self.givenVouchar.columns = self.format_header()
+        self.myVouchar = self.myVouchar.drop_duplicates(subset=['GSTno.', 'Invoice', 'type'])
 
-                # Sanitary check of data
-                self.data_sanit()
+    def combine_bill_otherSide(self):
+        # Combine separate bills in GST side
+        newVouchar = self.givenVouchar.groupby(['GSTno.', 'Invoice', 'type'])[
+            [
+                'Taxable Value (₹)',
+                'Tax Amount Integrated Tax  (₹)',
+                'Tax Amount Central Tax (₹)',
+                'Tax Amount State/UT tax (₹)'
+            ]
+        ].transform('sum')
 
-                #  format invoice
-                self.format_invoice()
+        for i in newVouchar.keys():
+            self.givenVouchar[i] = newVouchar[i]
 
-                #  check columns
-                self.myVouchar.rename(columns={'GSTIN/UIN': 'GSTno.'}, inplace=True)
-                self.givenVouchar.rename(columns={'GSTIN of supplier': 'GSTno.'}, inplace=True)
-
-                #sorting Data
-                self.myVouchar.sort_values(['GSTno.', 'Invoice'], ascending=[True, True])
-
-                # format type => debit or credit
-                self.format_type()
-
-                # Combine separate bills in GST side
-                newVouchar = self.givenVouchar.groupby(['GSTno.', 'Invoice','type'])[
-                    [
-                        'Taxable Value (₹)',
-                        'Tax Amount Integrated Tax  (₹)',
-                        'Tax Amount Central Tax (₹)',
-                        'Tax Amount State/UT tax (₹)'
-                    ]
-                ].transform('sum')
-
-                for i in newVouchar.keys():
-                    self.givenVouchar[i] = newVouchar[i]
-
-                self.givenVouchar = self.givenVouchar.drop_duplicates(subset=['GSTno.', 'Invoice', 'type'])
-
-                #  data join
-                self.mergedData = pd.merge(self.myVouchar, self.givenVouchar, on=['GSTno.', 'Invoice', 'type'], how='outer').fillna(0)
-
-                # match
-                self.match_work()
-
-                # spliting
-                # self.notMatched_myside = self.myVouchar[self.myVouchar['visited'] == 1]
-                # self.notMatched_otherside = self.givenVouchar[self.givenVouchar['visited'] == 1]
-
-                # # Creating excel writer
-                # outFileWriter = pd.ExcelWriter(self.outFilePath, engine='xlsxwriter')
-
-                # # write into a file
-                # # self.normal_status("Creating output file")
-                # self.mergedData.to_excel(outFileWriter, sheet_name='All Data')
-                # self.MatchedDetails.to_excel(outFileWriter, sheet_name="Matched Data")
-                # self.notMatched_myside.to_excel(outFileWriter, sheet_name="My Side")
-                # self.notMatched_otherside.to_excel(outFileWriter, sheet_name="GST portal")
-                # outFileWriter.save()
-
-                self.write_Result_to_excel()
-
-        except Exception as e:
-            print(str(e))
-        print("Process finished in : {0} secs".format(round(time.time() - start), 3))
+        self.givenVouchar = self.givenVouchar.drop_duplicates(subset=['GSTno.', 'Invoice', 'type'])
 
 
     def write_Result_to_excel(self):
@@ -396,6 +284,7 @@ class Purchase_Sales_Match(object):
             outFileWriter = pd.ExcelWriter(self.outFilePath, engine='xlsxwriter')
 
             # write into a file
+            del self.MatchedDetails['type']
             self.mergedData.to_excel(outFileWriter, sheet_name='All Data')
             self.MatchedDetails.to_excel(outFileWriter, sheet_name="Matched Data")
             self.notMatched_myside.to_excel(outFileWriter, sheet_name="My Side")
@@ -403,7 +292,7 @@ class Purchase_Sales_Match(object):
             self.match_report.to_excel(outFileWriter, sheet_name="Sanit of Invoice Report")
             self.givenVouchar.to_excel(outFileWriter, sheet_name="new sales")
             outFileWriter.save()
-            print("DONE")
+            # print("DONE")
 
         else:
             print("Writter is not ready")

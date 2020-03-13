@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem,  QApplication, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget
+from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem,  QApplication, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QSizePolicy
+from PyQt5.QtCore import QRect
 import sys
 
 class pair_label(QWidget):
@@ -45,11 +46,13 @@ class show_details(QWidget):
 
         grid.addWidget(self.gstNo, 0,0)
         grid.addWidget(self.invoice_no, 0,1)
-        grid.addWidget(self.company_name, 1,0)
+        grid.addWidget(self.company_name, 1,0,1,0)
         grid.addWidget(self.taxableValue, 2,0)
         grid.addWidget(self.cgst, 2,1)
         grid.addWidget(self.igst, 3,0)
         grid.addWidget(self.sgst, 3,1)
+
+        grid.setSpacing(0)
 
         self.setLayout(grid)
 

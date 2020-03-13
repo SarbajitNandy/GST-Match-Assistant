@@ -56,13 +56,14 @@ class table_widget(QTableWidget):
         if self.selected_row!= -1:
             print(self.selected_row)
             self.removeRow(self.selected_row)
+            self.data = self.data.drop(self.data.index[self.selected_row])
             return True
         return False
 
     def filter_rows(self, filter_text, on='name'):
-        print(filter_text)
+        # print(filter_text)
         column_index = self.key.index(on)
-        print(column_index)
+        # print(column_index)
         try:
             for row in range(self.rowCount()):
                 match = False
@@ -74,6 +75,9 @@ class table_widget(QTableWidget):
                 self.setRowHidden(row, not match)
         except Exception as e:
             print(str(e))
+
+    def get_data(self):
+        return self.data;
 
 # if __name__ == "__main__":
 #     def student_item_clicked(row, col):
