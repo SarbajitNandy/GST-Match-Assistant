@@ -52,10 +52,10 @@ class show_details(QWidget):
         grid.addWidget(self.igst, 3,0)
         grid.addWidget(self.sgst, 3,1)
 
-        grid.setSpacing(0)
 
         self.setLayout(grid)
 
+    # setters
     def set_gstno(self, value):
         self.gstNo.second.setText(value)
 
@@ -72,6 +72,22 @@ class show_details(QWidget):
     def set_igst(self,value):
         self.igst.second.setText(value)
 
+    # getters
+    def get_gstno(self):
+        return self.gstNo.second.text()
+    def get_invoice(self):
+        return self.invoice_no.second.text()
+    def get_company(self):
+        return self.company_name.second.text()
+    def get_cgst(self):
+        return float(self.cgst.second.text())
+    def get_taxablevalue(self):
+        return float(self.taxableValue.second.text())
+    def get_sgst(self):
+        return float(self.sgst.second.text())
+    def get_igst(self):
+        return float(self.igst.second.text())
+
     # format of data
     # {
     #     'GSTNo.' : "<>",
@@ -82,7 +98,6 @@ class show_details(QWidget):
     #     'sgst' : "<>",
     #     'igst' : "<>"
     # }
-
     def set_data(self, dict_data):  # follow the format mentioned above
         try:
             self.set_gstno(dict_data['GSTNo.'])
@@ -94,6 +109,31 @@ class show_details(QWidget):
             self.set_igst(dict_data['igst'])
         except Exception as e:
             print(str(e))
+
+    # format of data
+    # {
+    #     'GSTNo.' : "<>",
+    #     'Invoice' : "<>",
+    #     'Company' : "<>",
+    #     'TaxableValue' : "<>",
+    #     'cgst' : "<>",
+    #     'sgst' : "<>",
+    #     'igst' : "<>"
+    # }
+    def get_data(self):
+        try:
+            return {
+                'GSTNo.': self.get_gstno(),
+                'Invoice': self.get_invoice(),
+                'Company': self.get_company(),
+                'TaxableValue': self.get_taxablevalue(),
+                'cgst': self.get_cgst(),
+                'sgst': self.get_sgst(),
+                'igst': self.get_igst()
+            }
+        except Exception as e:
+            print(str(e))
+
     def clear_data(self):
         self.set_gstno('')
         self.set_invoice('')
@@ -102,6 +142,7 @@ class show_details(QWidget):
         self.set_cgst('')
         self.set_sgst('')
         self.set_igst('')
+
 
 # if __name__ == "__main__" :
 #     app = QApplication(sys.argv)

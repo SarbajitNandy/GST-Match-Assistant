@@ -1,5 +1,7 @@
+from _hashlib import new
+
 from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QApplication, QHBoxLayout, QMainWindow, \
-    QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QLineEdit, QFileDialog
+    QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QLineEdit, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore
 import pandas as pd
 import sys
@@ -76,11 +78,13 @@ class do_match_gui(QWidget):
             'GSTno.', 'Invoice details Invoice number', 'Trade/Legal name of the Supplier', 'Taxable Value (₹)',
             'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)', 'Tax Amount State/UT tax (₹)'
         ]
+
+        self.mySide_otherSide_intersection = list(set(self.read_cols_mySide).intersection(set(self.read_cols_otherSide)))
         self.write_cols = [
             'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
         ]
 
-        self.match_store : pd.DataFrame = pd.DataFrame();
+        self.match_store = []
 
         self.filePath = None;
         self.Excel: pd.ExcelFile= None;
@@ -127,7 +131,7 @@ class do_match_gui(QWidget):
         #     'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
         # ]
         data = self.mySide.select_rows(row)
-        print(data)
+        print("Myside" ,data)
         self.selected_mySide = pd.Series(data)
         write_data = {}
         for to, frm in zip(self.write_cols, self.read_cols_mySide):
@@ -147,6 +151,7 @@ class do_match_gui(QWidget):
         #     'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
         # ]
         data = self.otherSide.select_rows(row)
+        print("other side ", data)
         self.selected_otherSide = pd.Series(data)
         write_data = {}
         for to, frm in zip(self.write_cols, self.read_cols_otherSide):
@@ -162,6 +167,15 @@ class do_match_gui(QWidget):
             text = ''
         self.mySide.filter_rows(text, on='GSTno.')
         self.otherSide.filter_rows(text, on='GSTno.')
+
+    def msg_box(self, message):
+        msgBox = QMessageBox(self)
+        reply = msgBox.question(self, 'Warning',
+                                (
+                                    str(message)
+                                ),
+                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        return reply
 
     def load_data(self, first:pd.DataFrame=None, second:pd.DataFrame=None):
         if not (first.empty or second.empty):
@@ -180,29 +194,50 @@ class do_match_gui(QWidget):
         for i in keys:
             self.filter_line.addItem(str(i))
 
-    def match_work(self):
-        if not (self.selected_mySide.empty or self.selected_otherSide.empty):
-            print("inside match_work")
-            try:
-                data = self.selected_mySide.append(self.selected_otherSide).drop_duplicates()
-                print(data)
-                self.match_store = self.match_store.append(pd.DataFrame(data))
-                print(self.match_store)
+    def finalize_match(self):
+        try:
+            del self.selected_mySide["GSTno."]
+            data = self.selected_mySide.append(self.selected_otherSide)
+            self.match_store.append(data)
+            print(data)
+            # Make selecteddata Null
+            self.selected_mySide = self.selected_otherSide = pd.Series(dtype=float)
+            # clearing show_details widgets
+            self.left_side.clear_data()
+            self.right_side.clear_data()
+            # deleting rows from tables
+            self.mySide.delete_row()
+            self.otherSide.delete_row()
+            # making match_btn disable
+            self.match_btn_enable()
+        except Exception as e:
+            print(str(e))
 
-                # Make selected data Null
-                self.selected_mySide=self.selected_otherSide=pd.Series(dtype=float)
-                # clearing show_details widgets
-                self.left_side.clear_data()
-                self.right_side.clear_data()
-                # deleting rows from tables
-                self.mySide.delete_row()
-                self.otherSide.delete_row()
-                # making match_btn disable
-                self.match_btn_enable()
-            except Exception as e:
-                print(str(e))
+    def match_work(self):
+        try:
+            if not (self.selected_mySide.empty or self.selected_otherSide.empty):
+                print("inside match_work")
+                left = self.left_side.get_data()
+                right = self.right_side.get_data()
+                print("left right")
+
+                if (left['TaxableValue'] == right['TaxableValue'] and left['cgst'] == right['cgst'] and left['sgst'] ==
+                        right['sgst'] and left['igst'] == right['igst']):
+                    self.finalize_match()
+                else:
+                    reply = self.msg_box("Are you sure to match?  The selected items don't seem to be matching")
+                    if reply == QMessageBox.Yes:
+                        self.finalize_match()
+        except Exception as ve:
+            print(str(ve))
+
+    def save_work(self):
+        if self.match_store!=[]:
+            reply = self.msg_box("You are in the middle of your work. Would you like to Save it? ")
+            if reply == QMessageBox.Yes:
+                self.write_Result_to_excel()
         else:
-            pass
+            print("Nothing to write")
 
     def init_ui(self):
         font = QtGui.QFont()
@@ -233,9 +268,14 @@ class do_match_gui(QWidget):
         self.match_btn_enable()
         self.match_btn.clicked.connect(self.match_work)
 
+        # Save button
+        self.save_work_btn = QPushButton("Save Work")
+        self.save_work_btn.clicked.connect(self.save_work)
+
         Main_gBox = QGridLayout()
 
         Main_gBox.addWidget(self.filter_line, 0, 1)
+        Main_gBox.addWidget(self.save_work_btn, 0,2)
         Main_gBox.addWidget(self.mySide, 1, 0)
         Main_gBox.addWidget(self.otherSide, 1, 2)
         Main_gBox.addWidget(self.left_side, 2, 0)
@@ -244,9 +284,39 @@ class do_match_gui(QWidget):
 
         self.setLayout(Main_gBox)
 
-
         self.In = Input()
         self.In.send_filePath.connect(self.get_file_input)
+
+    def closeEvent(self, QCloseEvent):
+        self.In.close()
+        self.save_work()
+        super().closeEvent(QCloseEvent)
+
+    def write_Result_to_excel(self):
+        try:
+            # Creating excel writer
+            print("Writting results")
+            print(self.filePath)
+            outFileWriter = pd.ExcelWriter(self.filePath, engine='xlsxwriter')
+
+            prev_matched = pd.read_excel(self.Excel, sheet_name='Matched Data')
+            del prev_matched['Unnamed: 0']
+            new_data = pd.DataFrame(self.match_store)
+            current_matched = prev_matched.append(new_data, ignore_index=True)
+
+            print(new_data.shape, prev_matched.shape, current_matched.shape)
+
+            # write into a file
+            current_matched.to_excel(outFileWriter, sheet_name="Matched Data")
+            self.mySide.data.to_excel(outFileWriter, sheet_name="My Side")
+            self.otherSide.data.to_excel(outFileWriter, sheet_name="GST portal")
+
+            outFileWriter.save()
+            self.match_store=[]
+            # print("DONE")
+        except Exception as e:
+            print(str(e))
+
 
 
 
