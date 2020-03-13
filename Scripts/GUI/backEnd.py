@@ -33,9 +33,9 @@ class Purchase_Sales_Match(object):
         self.notMatched_otherside: pd.DataFrame = None
 
         # columns values
-        self.mycols =  ['Particulars', 'GSTIN/UIN', 'Invoice No.', 'Taxable Value', 'Integrated Tax Amount',
+        self.mycols =  ['Particulars', 'GSTIN/UIN', 'Invoice No.' , 'Date', 'Taxable Value', 'Integrated Tax Amount',
                           'Central Tax Amount', 'State Tax Amount', 'Total Tax Amount']
-        self.gvcols =['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number', 'Invoice details Invoice Value (₹)',
+        self.gvcols =['GSTIN of supplier', 'Trade/Legal name of the Supplier','Invoice details Invoice number','Invoice details Invoice Date', 'Invoice details Invoice Value (₹)',
                           'Taxable Value (₹)', 'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)',
                           'Tax Amount State/UT tax (₹)']
         # success signals
@@ -140,32 +140,6 @@ class Purchase_Sales_Match(object):
 
         self.match_report = pd.DataFrame(matching_excel)
         return
-
-    # def attach(self,left, right):
-    #     l = left.append(right)
-    #     # print(l)
-    #     return l
-
-    # def combo(self, left: pd.DataFrame, right: pd.DataFrame, on=None):
-    #
-    #     left['visited'] = [0 for _ in range(len(left))]
-    #     right['visited'] = [0 for _ in range(len(right))]
-    #
-    #     merge_result = []
-    #
-    #     for i, row1 in left.iterrows():
-    #         for j, row2 in right.iterrows():
-    #             if (row1['visited'] == 0 and row2['visited'] == 0):
-    #                 if (row1[on[0]] == row2[on[0]] and row1[on[1]] == row2[on[1]]):
-    #                     row1['visited'] = row2['visited'] = 1
-    #                     # obj = {'A': row1['A'], 'B': row2['B'], 'value1': row1["value"], 'value2': row2['value']}
-    #                     # obj = row1.append(row2)
-    #                     obj = self.attach(row1, row2)
-    #                     merge_result.append(obj)
-    #                     print(i,j)
-    #                     break
-    #
-    #     return pd.DataFrame(merge_result)
 
     def convert_to_float(self):
         # self.givenVouchar['Taxable Value (₹)'] = self.givenVouchar['Taxable Value (₹)'].astype(float)

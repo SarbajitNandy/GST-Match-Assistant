@@ -3,6 +3,7 @@ from _hashlib import new
 from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QApplication, QHBoxLayout, QMainWindow, \
     QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QLineEdit, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore
+from PyQt5.QtGui import QIcon
 import pandas as pd
 import sys
 from Scripts.GUI.ShowDetailsWidget import show_details
@@ -67,16 +68,19 @@ class do_match_gui(QWidget):
         self.mySide_data: pd.DataFrame = None
         self.otherSide_data: pd.DataFrame = None
 
+        self.filter_line_selected_index = -1
+        self.keys = []
+
         self.selected_mySide: pd.Series = pd.Series(dtype=float)
         self.selected_otherSide: pd.Series = pd.Series(dtype=float)
 
         self.read_cols_mySide = [
             'GSTno.', 'Invoice No.', 'Particulars', 'Taxable Value', 'Integrated Tax Amount',
-            'Central Tax Amount', 'State Tax Amount'
+            'Central Tax Amount', 'State Tax Amount', 'Date'
         ]
         self.read_cols_otherSide = [
             'GSTno.', 'Invoice details Invoice number', 'Trade/Legal name of the Supplier', 'Taxable Value (₹)',
-            'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)', 'Tax Amount State/UT tax (₹)'
+            'Tax Amount Integrated Tax  (₹)', 'Tax Amount Central Tax (₹)', 'Tax Amount State/UT tax (₹)','Invoice details Invoice Date'
         ]
 
         self.mySide_otherSide_intersection = list(set(self.read_cols_mySide).intersection(set(self.read_cols_otherSide)))
@@ -99,6 +103,7 @@ class do_match_gui(QWidget):
 
     def get_file_input(self, filePath):
         self.In.close()
+        self.setEnabled(True)
         print(filePath)
         self.filePath = filePath
         self.Excel = pd.ExcelFile(self.filePath)
@@ -162,6 +167,7 @@ class do_match_gui(QWidget):
 
     def filter(self):
         text = self.filter_line.currentText()
+        self.filter_line_selected_index = self.keys.index(text)
         # print(text)
         if text == 'Select all':
             text = ''
@@ -192,6 +198,7 @@ class do_match_gui(QWidget):
         keys = pd.Series(["Select all"]).append(self.mySide_data['GSTno.']).append(self.otherSide_data['GSTno.'])
         keys = keys.drop_duplicates()
         for i in keys:
+            self.keys.append(str(i))
             self.filter_line.addItem(str(i))
 
     def finalize_match(self):
@@ -239,6 +246,15 @@ class do_match_gui(QWidget):
         else:
             print("Nothing to write")
 
+    def go_prev(self):
+        if (self.filter_line_selected_index>0):
+            self.filter_line_selected_index-=1
+            self.filter_line.setCurrentText(self.keys[self.filter_line_selected_index])
+    def go_next(self):
+        if (self.filter_line_selected_index < len(self.keys) -1):
+            self.filter_line_selected_index += 1
+            self.filter_line.setCurrentText(self.keys[self.filter_line_selected_index])
+
     def init_ui(self):
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -269,13 +285,24 @@ class do_match_gui(QWidget):
         self.match_btn.clicked.connect(self.match_work)
 
         # Save button
-        self.save_work_btn = QPushButton("Save Work")
+        self.save_work_btn = QPushButton("Save")
         self.save_work_btn.clicked.connect(self.save_work)
+
+        gBox = QGridLayout()
+        self.filter_prev_btn = QPushButton()
+        self.filter_prev_btn.setIcon(QIcon('E:\Programs\Py\TallyProject\media\icons\provious.png'))
+        self.filter_prev_btn.clicked.connect(self.go_prev)
+        self.filter_next_btn = QPushButton()
+        self.filter_next_btn.setIcon(QIcon('E:\Programs\Py\TallyProject\media\icons\\next.png'))
+        self.filter_next_btn.clicked.connect(self.go_next)
+        gBox.addWidget(self.filter_prev_btn,1,0)
+        gBox.addWidget(self.filter_next_btn,1,1)
+        gBox.addWidget(self.filter_line,0,0,1,0)
 
         Main_gBox = QGridLayout()
 
-        Main_gBox.addWidget(self.filter_line, 0, 1)
-        Main_gBox.addWidget(self.save_work_btn, 0,2)
+        Main_gBox.addItem(gBox, 0, 1)
+        Main_gBox.addWidget(self.save_work_btn, 3,1)
         Main_gBox.addWidget(self.mySide, 1, 0)
         Main_gBox.addWidget(self.otherSide, 1, 2)
         Main_gBox.addWidget(self.left_side, 2, 0)
@@ -283,6 +310,7 @@ class do_match_gui(QWidget):
         Main_gBox.addWidget(self.right_side, 2, 2)
 
         self.setLayout(Main_gBox)
+        self.setDisabled(True)
 
         self.In = Input()
         self.In.send_filePath.connect(self.get_file_input)
