@@ -1,7 +1,5 @@
 import pandas as pd
 import re
-import time
-from random import random
 
 from Scripts.Exceptions import *;
 

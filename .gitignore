@@ -1,5 +1,9 @@
 .idea
 venv/
 */__pycache__/
+Scripts/build/
+Scripts/dist/
+Scripts/GUI/build/
+Scripts/GUI/dist/
 
 
