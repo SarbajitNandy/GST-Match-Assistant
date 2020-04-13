@@ -134,8 +134,17 @@ class Purchase_Sales_Match(object):
         # self.myVouchar["Invoice"] = [self.spl(i) for i in self.myVouchar["Invoice No."]]
         # self.givenVouchar["Invoice"] = [self.spl(i) for i in self.givenVouchar["Invoice details Invoice number"]]
 
-        self.myVouchar["Invoice"] = self.myVouchar["Invoice No."].copy()
-        self.givenVouchar["Invoice"] = self.givenVouchar["Invoice details Invoice number"].copy()
+        # self.myVouchar["Invoice"] = self.myVouchar["Invoice No."].copy()
+        # self.givenVouchar["Invoice"] = self.givenVouchar["Invoice details Invoice number"].copy()
+
+        self.myVouchar["Invoice"] = [ str(item) for item in self.myVouchar["Invoice No."]]
+        self.givenVouchar["Invoice"] = [ str(item) for item in self.givenVouchar["Invoice details Invoice number"]]
+
+        # for item in self.myVouchar['Invoice']:
+        #     print(item.__str__())
+        #
+        # for item in self.givenVouchar['Invoice']:
+        #     print(item.__str__())
 
         matching_excel['Invoice']  = self.myVouchar["Invoice No."].append(self.givenVouchar["Invoice details Invoice number"])
         matching_excel['Sanitized Data'] = self.myVouchar["Invoice"].append(self.givenVouchar["Invoice"])

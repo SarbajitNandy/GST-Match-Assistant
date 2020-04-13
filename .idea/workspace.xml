@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TallyProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TallyProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet4/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet4/mergedFile.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +22,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Ywb4JcvnqA5dzsnqEiNyfeBshC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -43,7 +41,7 @@
       <recent name="E:\Programs\Py\TallyProject\media\testSet4" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.autoMatch">
+  <component name="RunManager" selected="Python.doMatch">
     <configuration name="DoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TallyProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,10 +149,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.autoMatch" />
         <item itemvalue="Python.doMatch" />
-        <item itemvalue="Python.gui" />
         <item itemvalue="Python.DoMatch" />
+        <item itemvalue="Python.autoMatch" />
+        <item itemvalue="Python.gui" />
         <item itemvalue="Python.test (1)" />
       </list>
     </recent_temporary>
@@ -177,26 +175,30 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="275" y="42" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1583860245747" />
+    <state x="402" y="0" key="#autoMatch" timestamp="1586788538063">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="402" y="0" key="#autoMatch/0.0.1366.768@0.0.1366.768" timestamp="1586788538063" />
     <state x="432" y="220" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1584142566299">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="432" y="220" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1366.768@0.0.1366.768" timestamp="1584142566299" />
-    <state width="1345" height="191" key="GridCell.Tab.0.bottom" timestamp="1584521684806">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1586790890379">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="191" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584521684806" />
-    <state width="1345" height="191" key="GridCell.Tab.0.center" timestamp="1584521684806">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1586790890379" />
+    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1586790890379">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="191" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1584521684806" />
-    <state width="1345" height="191" key="GridCell.Tab.0.left" timestamp="1584521684806">
+    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1586790890379" />
+    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1586790890379">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="191" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1584521684806" />
-    <state width="1345" height="191" key="GridCell.Tab.0.right" timestamp="1584521684806">
+    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1586790890379" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1586790890379">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="191" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1584521684806" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1586790890379" />
     <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1584263339424">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -213,10 +215,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1345" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state x="368" y="19" width="998" height="726" key="SettingsEditor" timestamp="1584142096834">
+    <state x="152" y="0" width="998" height="726" key="SettingsEditor" timestamp="1586791010804">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="368" y="19" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1584142096834" />
+    <state x="152" y="0" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1586791010804" />
     <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1584521154875">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
