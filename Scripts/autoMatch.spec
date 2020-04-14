@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['autoMatch.py'],
-             pathex=['E:\\Programs\\Py\\TallyProject\\Scripts'],
+             pathex=['D:\\Programs\\Py\\TallyProject\\Scripts'],
              binaries=[],
              datas=[],
              hiddenimports=[],

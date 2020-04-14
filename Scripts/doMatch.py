@@ -298,13 +298,13 @@ class do_match_gui(QWidget):
 
         self.mySide_otherSide_intersection = list(set(self.read_cols_mySide).intersection(set(self.read_cols_otherSide)))
         self.write_cols = [
-            'GSTNo.', "Invoice", "Company", "TaxableValue", "cgst", 'sgst', 'igst'
+            'GSTNo.', "Invoice", "Company", "TaxableValue", "igst", 'cgst', 'sgst'
         ]
 
         self.match_store = []
 
-        self.filePath = None;
-        self.Excel: pd.ExcelFile= None;
+        self.filePath = None
+        self.Excel: pd.ExcelFile= None
 
         self.init_ui()
         self.show()

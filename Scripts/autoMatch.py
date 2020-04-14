@@ -128,6 +128,13 @@ class Purchase_Sales_Match(object):
         return
 
 
+    @staticmethod
+    def make_int_if_possible(invoice):
+        try:
+            return int(invoice)
+        except:
+            return str(invoice)
+
     def format_invoice(self):
         matching_excel = {}
 
@@ -137,8 +144,8 @@ class Purchase_Sales_Match(object):
         # self.myVouchar["Invoice"] = self.myVouchar["Invoice No."].copy()
         # self.givenVouchar["Invoice"] = self.givenVouchar["Invoice details Invoice number"].copy()
 
-        self.myVouchar["Invoice"] = [ str(item) for item in self.myVouchar["Invoice No."]]
-        self.givenVouchar["Invoice"] = [ str(item) for item in self.givenVouchar["Invoice details Invoice number"]]
+        self.myVouchar["Invoice"] = [ Purchase_Sales_Match.make_int_if_possible(item) for item in self.myVouchar["Invoice No."]]
+        self.givenVouchar["Invoice"] = [ Purchase_Sales_Match.make_int_if_possible(item) for item in self.givenVouchar["Invoice details Invoice number"]]
 
         # for item in self.myVouchar['Invoice']:
         #     print(item.__str__())
