@@ -494,6 +494,14 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
         self.main()
         print("run finished")
 
+    @staticmethod
+    def check_cronic(n):
+        if (len(n)==1):return True
+        for i in range(1,len(n)):
+            if (n[i] != n[i-1]+1):
+                return False
+        return True
+
     def startProcess_handler(self):
 
         def getPoint(n):
@@ -510,9 +518,14 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
             # self.file2Sheet = self.sheetName2.text().strip()
             self.file1Sheet = self.file1SheetName.currentText()
             self.file2Sheet = self.file2SheetName.currentText()
+
+            if (header1=='' or header2==''): raise MsgException("Header contains nothing")
+
             self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
             self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
-            if (self.file1Header=='' or self.file2Header==''): raise MsgException("Header contains nothing")
+
+            if not (self.check_cronic(self.file1Header) and self.check_cronic(self.file2Header)):
+                raise MsgException("Wrong Header value")
             self.statusView.clear()
             self.start()
         except Exception as e:

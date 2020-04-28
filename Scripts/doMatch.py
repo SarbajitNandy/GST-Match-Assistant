@@ -6,6 +6,7 @@ from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
 import pandas as pd
 import sys
+import os
 
 
 class pair_label(QWidget):
@@ -306,6 +307,8 @@ class do_match_gui(QWidget):
         self.filePath = None
         self.Excel: pd.ExcelFile= None
 
+        self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         self.init_ui()
         self.show()
 
@@ -479,11 +482,13 @@ class do_match_gui(QWidget):
         self.save_work_btn.clicked.connect(self.save_work)
 
         gBox = QGridLayout()
-        self.filter_prev_btn = QPushButton()
-        self.filter_prev_btn.setIcon(QIcon('E:\Programs\Py\TallyProject\media\icons\provious.png'))
+        self.filter_prev_btn = QPushButton("<")
+        # prev_icon = self.BASE_DIR + "\\Scripts\\assets\\icons\\previous.png"
+        # print(self.BASE_DIR, prev_icon)
+        # self.filter_prev_btn.setIcon(QIcon("D:\\Programs\\Py\TallyProject\\Scripts\\assets\\icons\\previous.png"))
         self.filter_prev_btn.clicked.connect(self.go_prev)
-        self.filter_next_btn = QPushButton()
-        self.filter_next_btn.setIcon(QIcon('E:\Programs\Py\TallyProject\media\icons\\next.png'))
+        self.filter_next_btn = QPushButton(">")
+        # self.filter_next_btn.setIcon(QIcon(os.path.join(self.BASE_DIR,"/Scripts/assets/icons/previous.png")))
         self.filter_next_btn.clicked.connect(self.go_next)
         gBox.addWidget(self.filter_prev_btn,1,0)
         gBox.addWidget(self.filter_next_btn,1,1)
