@@ -4,7 +4,9 @@
     <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Package/autoMatch.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Package/autoMatch.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Package/doMatch.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Package/doMatch.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/media/testSet6/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet6/mergedFile.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,18 +37,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programs\Py\TallyProject\Scripts\assets" />
-      <recent name="D:\Programs\Py\TallyProject\Scripts" />
-      <recent name="D:\Programs\Py\TallyProject" />
-      <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Programs\Py\TallyProject\Package" />
       <recent name="D:\Programs\Py\TallyProject\Scripts\dist" />
       <recent name="E:\Programs\Py\TallyProject\Scripts" />
       <recent name="E:\Programs\Py\TallyProject\media\icons" />
       <recent name="E:\Programs\Py\TallyProject\media\testSet5" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programs\Py\TallyProject\Scripts\assets" />
+      <recent name="D:\Programs\Py\TallyProject\Scripts" />
+      <recent name="D:\Programs\Py\TallyProject" />
+      <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
     </key>
   </component>
   <component name="RunManager" selected="Python.autoMatch">
@@ -183,10 +185,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="275" y="42" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1583860245747" />
-    <state x="402" y="0" key="#autoMatch" timestamp="1586788538063">
+    <state x="402" y="0" key="#autoMatch" timestamp="1588138999462">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="402" y="0" key="#autoMatch/0.0.1366.768@0.0.1366.768" timestamp="1586788538063" />
+    <state x="402" y="0" key="#autoMatch/0.0.1366.768@0.0.1366.768" timestamp="1588138999462" />
     <state x="428" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588107000566">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -199,22 +201,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1588103105299" />
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588135236732">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588139206924">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588135236732" />
-    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588135236731">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588139206924" />
+    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588139206923">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588135236731" />
-    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588135236731">
+    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588139206923" />
+    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588139206922">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588135236731" />
-    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588135236731">
+    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588139206922" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588139206923">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588135236731" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588139206923" />
     <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1584263339424">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -231,14 +233,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1345" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state x="152" y="0" width="998" height="726" key="SettingsEditor" timestamp="1588133245864">
+    <state x="152" y="0" width="998" height="726" key="SettingsEditor" timestamp="1588139028154">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="152" y="0" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1588133245864" />
-    <state x="373" y="177" key="com.intellij.ide.util.TipDialog" timestamp="1588132966342">
+    <state x="152" y="0" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1588139028154" />
+    <state x="373" y="177" key="com.intellij.ide.util.TipDialog" timestamp="1588138982017">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="373" y="177" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588132966342" />
+    <state x="373" y="177" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588138982017" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584094669374">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
