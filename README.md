@@ -22,20 +22,26 @@ This application comes with two executable files :-
 
 ### Demo Workflow
 
-##### The Home page of autoMatch.exe look like: 
+##### The Home page of autoMatch.exe look like:
+\
 ![](readme/automatch_home.png)
 
 ##### After choosing excel files, it will give a list of sheets available into those excel file. Choice is yours which one to work with
+\
 ![](readme/automatch_dropdown.png)
 
 ##### Now, you have to choose the rows where the table columns are written
-This image shows my demo excel file, the red box indicates the numbers of rows where table column are written
+\
+* This image shows my demo excel file, the red box indicates the numbers of rows where table column are written
+\
 ![](readme/whatisheader.png)
 
-These numbers are needed to be written in the "Header" section separated by comma (,)
+* These numbers are needed to be written in the "Header" section separated by comma (,)
+\
 ![](readme/automatch_header.png)
 
-After this, press the "Start" button, see the magic: 
+* After this, press the "Start" button, see the magic: 
+\
 ![](readme/automatch_success_rate.png)
 
 Here in the red box, you can see the result along with accuracy and time of Auto Matching. 
