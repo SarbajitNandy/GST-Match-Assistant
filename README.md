@@ -18,7 +18,7 @@ This application comes with two executable files :-
 
 >   This application comes with executable binary files.\
 >   Doesn't require any sort of installation,\
->   Just download, run and work
+>   Just download the 'Package' folder, run those executable and work
 
 ### Demo Workflow
 
