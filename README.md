@@ -68,10 +68,10 @@ This application comes with two executable files :-
 
 * Doing manual match
 
-> 1. Click on any row on left side and right side\
-> 2. Item will update the values on two small boxes\
-> 3. press the match button\
-> 4. If the values on the small boxes are equal, then match request will be accepted\
+> 1. Click on any row on left side and right side
+> 2. Item will update the values on two small boxes
+> 3. press the match button
+> 4. If the values on the small boxes are equal, then match request will be accepted, and those two row will be deleted
 > 5. Otherwise, it will prompt you a message
 
 ![](readme/matchMaking.png)
