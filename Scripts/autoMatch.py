@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import time
+import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
@@ -315,6 +316,10 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
         QThread.__init__(self)
 
     def setupUi(self, MainWindow):
+        scriptDir = os.path.dirname(os.path.realpath(__file__))
+        MainWindow.setWindowTitle("Auto Match")
+        MainWindow.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets/icons/window.png"))
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(620, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -440,7 +445,9 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        scriptDir = os.path.dirname(os.path.realpath(__file__))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Auto Match"))
+        MainWindow.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets/icons/window.png"))
         self.file1.setText(_translate("MainWindow", "Import file from Tally"))
         self.file2.setText(_translate("MainWindow", "Import file from GST Portal"))
         self.browseFile1.setText(_translate("MainWindow", "Browse"))

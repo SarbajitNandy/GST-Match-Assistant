@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/assets/icons/provious.png" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/assets/icons/previous.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/doMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/icons/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/assets/icons/next.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/icons/provious.png" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/assets/icons/provious.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet1/PURCHASE_QE DEC'2019.xls" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet1/PURCHASE_QE DEC'2019.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet2/GHS_PURCHASE_UPTO SEP'2019.xls" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet2/GHS_PURCHASE_UPTO SEP'2019.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet2/SUMMARY OF GSTR_2A_UPTO 30-09-19.xls" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet2/SUMMARY OF GSTR_2A_UPTO 30-09-19.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet5/PURCHASE_2018-2019.xls" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/PURCHASE_2018-2019.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet5/SUMMARY OF GSTR_2A_2018-19_2nd TIME.xls" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/SUMMARY OF GSTR_2A_2018-19_2nd TIME.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/doMatch.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.spec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,24 +32,25 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Scripts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Package" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Py\TallyProject\Scripts\dist" />
+      <recent name="E:\Programs\Py\TallyProject\Scripts" />
+      <recent name="E:\Programs\Py\TallyProject\media\icons" />
+      <recent name="E:\Programs\Py\TallyProject\media\testSet5" />
+      <recent name="E:\Programs\Py\TallyProject\media\testSet4" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Programs\Py\TallyProject\Scripts\assets" />
       <recent name="D:\Programs\Py\TallyProject\Scripts" />
       <recent name="D:\Programs\Py\TallyProject" />
       <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Programs\Py\TallyProject\Scripts" />
-      <recent name="E:\Programs\Py\TallyProject\media\icons" />
-      <recent name="E:\Programs\Py\TallyProject\media\testSet5" />
-      <recent name="E:\Programs\Py\TallyProject\media\testSet4" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.autoMatch">
+  <component name="RunManager" selected="Python.doMatch">
     <configuration name="DoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TallyProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -119,6 +114,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="easy_install" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TallyProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/build/autoMatch/setuptools-40.8.0-py3.7.egg" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/build/autoMatch/setuptools-40.8.0-py3.7.egg/easy_install.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TallyProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -140,34 +156,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.autoMatch" />
         <item itemvalue="Python.doMatch" />
+        <item itemvalue="Python.easy_install" />
+        <item itemvalue="Python.autoMatch" />
         <item itemvalue="Python.DoMatch" />
         <item itemvalue="Python.gui" />
-        <item itemvalue="Python.test (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +188,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="402" y="0" key="#autoMatch/0.0.1366.768@0.0.1366.768" timestamp="1586788538063" />
+    <state x="428" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588107000566">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="428" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1588107000566" />
     <state x="432" y="220" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1584142566299">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -201,22 +200,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1588103105299" />
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588104448454">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588107190162">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588104448454" />
-    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588104448453">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588107190162" />
+    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588107190162">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588104448453" />
-    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588104448452">
+    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588107190162" />
+    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588107190161">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588104448452" />
-    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588104448453">
+    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588107190161" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588107190162">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588104448453" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588107190162" />
     <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1584263339424">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -237,10 +236,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="152" y="0" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1588102667019" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1588102609313">
+    <state x="373" y="177" key="com.intellij.ide.util.TipDialog" timestamp="1588132966342">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588102609313" />
+    <state x="373" y="177" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588132966342" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584094669374">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

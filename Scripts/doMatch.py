@@ -3,7 +3,7 @@ from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QApplication, QHBoxLayout, QMainWindow, \
     QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QLineEdit, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtGui import QIcon
+# from PyQt5.QtGui import QIcon
 import pandas as pd
 import sys
 import os
@@ -229,6 +229,7 @@ class Input(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+        self.setWindowTitle("Input")
         self.filePath = None;
         self.Excel: pd.ExcelFile = None;
 
@@ -449,6 +450,11 @@ class do_match_gui(QWidget):
             self.filter_line.setCurrentText(self.keys[self.filter_line_selected_index])
 
     def init_ui(self):
+        scriptDir = os.path.dirname(os.path.realpath(__file__))
+        print(scriptDir)
+        self.setWindowTitle("Manual Match")
+        self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets/icons/window.png"))
+
         font = QtGui.QFont()
         font.setPointSize(10)
         self.setFont(font)
@@ -456,6 +462,7 @@ class do_match_gui(QWidget):
         self.mySide.setFixedHeight(300)
         self.otherSide = table_widget()
         self.otherSide.setFixedHeight(300)
+
 
         self.mySide.cellClicked.connect(self.mySide_item_clicked)
 
@@ -482,13 +489,11 @@ class do_match_gui(QWidget):
         self.save_work_btn.clicked.connect(self.save_work)
 
         gBox = QGridLayout()
-        self.filter_prev_btn = QPushButton("<")
-        # prev_icon = self.BASE_DIR + "\\Scripts\\assets\\icons\\previous.png"
-        # print(self.BASE_DIR, prev_icon)
-        # self.filter_prev_btn.setIcon(QIcon("D:\\Programs\\Py\TallyProject\\Scripts\\assets\\icons\\previous.png"))
+        self.filter_prev_btn = QPushButton()
+        self.filter_prev_btn.setIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets\icons\previous.png"))
         self.filter_prev_btn.clicked.connect(self.go_prev)
-        self.filter_next_btn = QPushButton(">")
-        # self.filter_next_btn.setIcon(QIcon(os.path.join(self.BASE_DIR,"/Scripts/assets/icons/previous.png")))
+        self.filter_next_btn = QPushButton()
+        self.filter_next_btn.setIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets\icons\\next.png"))
         self.filter_next_btn.clicked.connect(self.go_next)
         gBox.addWidget(self.filter_prev_btn,1,0)
         gBox.addWidget(self.filter_next_btn,1,1)
