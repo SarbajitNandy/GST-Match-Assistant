@@ -22,26 +22,70 @@ This application comes with two executable files :-
 
 ### Demo Workflow
 
-##### The Home page of autoMatch.exe look like:\
+##### The Home page of autoMatch.exe look like:
+
 ![](readme/automatch_home.png)
 
-##### After choosing excel files, it will give a list of sheets available into those excel file. Choice is yours which one to work with\
+##### After choosing excel files, it will give a list of sheets available into those excel file. Choice is yours which one to work with
+
 ![](readme/automatch_dropdown.png)
 
-##### Now, you have to choose the rows where the table columns are written\
-* This image shows my demo excel file, the red box indicates the numbers of rows where table column are written\
+##### Now, you have to choose the rows where the table columns are written
+
+* This image shows my demo excel file, the red box indicates the numbers of rows where table column are written
 ![](readme/whatisheader.png)
 
-* These numbers are needed to be written in the "Header" section separated by comma (,)\
+* These numbers are needed to be written in the "Header" section separated by comma (,)
 ![](readme/automatch_header.png)
 
-* After this, press the "Start" button, see the magic: \
+* After this, press the "Start" button, see the magic:
 ![](readme/automatch_success_rate.png)
 
-Here in the red box, you can see the result along with accuracy and time of Auto Matching. 
-It will create a new file in the same directory
+* Here in the red box, you can see the result along with accuracy and time of Auto Matching.\
+* It will create a new file in the same directory
+
+![](readme/newFile.png)
 
 
+##### The Home page of doMatch.exe look like:
+
+![](readme/domatch_input.png)
+
+* In this browse filebox, you need to provide the newly created file by autoMatch.exe
+
+![](readme/newFile.png)
+
+* Image of DoMatch work area 
+
+![](readme/doMatchBody.png)
+
+* Filter bar
+
+![](readme/doMatch_filterBar.png)
+
+> Note: Filter bar will help you to filter out table content by GST Number,\
+> There are two buttons available : Previous GST no and Next GST no
+
+* Doing manual match
+
+> 1. Click on any row on left side and right side\
+> 2. Item will update the values on two small boxes\
+> 3. press the match button\
+> 4. If the values on the small boxes are equal, then match request will be accepted\
+> 5. Otherwise, it will prompt you a message
+
+![](readme/matchMaking.png)
+
+* Save your result
+
+> Press the save button to save the result,\
+> It will update the same file
+
+###### Note:
+> If your ongoing task is not saved and you try to close the application,
+> It will prompt you with a message to save your work
+
+![](readme/shutdown_on_unsaved_work.png)
 
 
 
