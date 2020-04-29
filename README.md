@@ -1,6 +1,6 @@
-# TallyProject
+# GST Match Assistant
 
-### TallyProject is a business application for those who struggles to resolve their billing transactions 
+### GST Match Assistant is a business application for those who struggles to resolve their billing transactions 
 
 To run a business successfully and smoothly, everyone tries to resolve their incoming and outgoing cash flow as quickly and simply as possible. But humans are not machine. 
     Big business make over 1000's of such transactions per week, and get them resolved as the business speeds up, is nearly impossible by humans.
