@@ -480,12 +480,35 @@ class do_match_gui(QWidget):
         self.right_side.setFixedWidth(400)
 
         # match button
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(20)
         self.match_btn = QPushButton('Match')
         self.match_btn_enable()
+        self.match_btn.setStyleSheet('''
+          text-align: center;
+          border: 1px solid transparent;
+          color: #007bff;
+            border-color: #007bff;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        ''')
+        self.match_btn.setFont(font)
         self.match_btn.clicked.connect(self.match_work)
 
         # Save button
         self.save_work_btn = QPushButton("Save")
+        self.save_work_btn.setStyleSheet('''
+            text-align: center;
+            border: 1px solid transparent;
+            background-color: transparent;
+            color: #28a745;
+            border-color: #28a745;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        ''')
+        self.save_work_btn.setFont(font)
         self.save_work_btn.clicked.connect(self.save_work)
 
         gBox = QGridLayout()

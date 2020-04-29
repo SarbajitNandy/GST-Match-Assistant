@@ -374,8 +374,22 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
         self.headerLineFile2.setObjectName("headerLineFile2")
 
         # start button
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setWeight(50)
         self.startProcess = QtWidgets.QPushButton(self.centralwidget)
         self.startProcess.setGeometry(QtCore.QRect(490, 300, 91, 41))
+        self.startProcess.setFont(font)
+        self.startProcess.setStyleSheet('''
+            text-align: center;
+            border: 1px solid transparent;
+            background-color: transparent;
+            color: #28a745;
+            border-color: #28a745;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        ''')
         self.startProcess.setObjectName("startProcess")
 
         # sheet lables
