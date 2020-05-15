@@ -22,6 +22,19 @@ This application comes with two executable files :-
 
 ### Demo Workflow
 
+##### Data Validation
+
+* Excel File for Purchase side should follow the following format
+![](excel_templates/purchase_excel.png)
+
+* Excel File for Sales side should follow the following format
+![](excel_templates/sales_side_excel.png)
+
+###### Note:
+> All of the mentioned excel file templates are available in 'Package' folder,
+> You can follow this format to create your own data in the best compatible way
+
+
 ##### The Home page of autoMatch.exe look like:
 
 ![](readme/automatch_home.png)

@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Package/autoMatch.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Package/autoMatch.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet5/mergedFile.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/testSet6/mergedFile.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/media/testSet6/mergedFile.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,22 +196,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1588103105299" />
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588139206924">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588152083037">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588139206924" />
-    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588139206923">
+    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
+    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588152083037">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588139206923" />
-    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588139206922">
+    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
+    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588152083036">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588139206922" />
-    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588139206923">
+    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588152083036" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588152083037">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588139206923" />
+    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
     <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1584263339424">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
