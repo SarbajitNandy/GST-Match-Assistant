@@ -1,75 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="">
+    <list default="true" id="4268bf89-dd4a-4e60-aedc-b3d0e9ef0833" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TallyProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/addSheetDetails.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/addSheetDetails.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd_COPY.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd_COPY.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/old_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/old_GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/GUI/tableWidget.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/tableWidget.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/doMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/doMatch.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/testPanda.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/testPanda.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1Ywb4JcvnqA5dzsnqEiNyfeBshC" />
+  <component name="JupyterTrust" id="087371b1-7e85-4588-aec9-a6b5f4f9b99c" />
+  <component name="ProjectId" id="1lYgbTX1uWty2fuTjTNNiGRPXfK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Package" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Programs\Py\TallyProject\Package" />
-      <recent name="D:\Programs\Py\TallyProject\Scripts\dist" />
-      <recent name="E:\Programs\Py\TallyProject\Scripts" />
-      <recent name="E:\Programs\Py\TallyProject\media\icons" />
-      <recent name="E:\Programs\Py\TallyProject\media\testSet5" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programs\Py\TallyProject\Scripts\assets" />
-      <recent name="D:\Programs\Py\TallyProject\Scripts" />
-      <recent name="D:\Programs\Py\TallyProject" />
-      <recent name="D:\Programs\Py\TallyProject\Scripts\GUI" />
-    </key>
-  </component>
   <component name="RunManager" selected="Python.autoMatch">
-    <configuration name="DoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="autoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
+      <module name="GST-Match-Assistant" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -80,6 +63,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/autoMatch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -90,7 +74,7 @@
       <method v="2" />
     </configuration>
     <configuration name="doMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
+      <module name="GST-Match-Assistant" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -101,49 +85,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/doMatch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="easy_install" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/build/autoMatch/setuptools-40.8.0-py3.7.egg" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/build/autoMatch/setuptools-40.8.0-py3.7.egg/easy_install.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TallyProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/GUI/gui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,89 +99,47 @@
       <list>
         <item itemvalue="Python.autoMatch" />
         <item itemvalue="Python.doMatch" />
-        <item itemvalue="Python.easy_install" />
-        <item itemvalue="Python.DoMatch" />
-        <item itemvalue="Python.gui" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="392085d6-81cb-46e4-aae8-5f9a767e3e48" name="Default Changelist" comment="" />
-      <created>1583856410623</created>
+      <changelist id="4268bf89-dd4a-4e60-aedc-b3d0e9ef0833" name="Default Changelist" comment="" />
+      <created>1607779515483</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1583856410623</updated>
+      <updated>1607779515483</updated>
+      <workItem from="1607779545795" duration="592000" />
+      <workItem from="1607866515071" duration="110000" />
+      <workItem from="1607866861731" duration="1379000" />
+      <workItem from="1607868354965" duration="229000" />
+      <workItem from="1607868898825" duration="485000" />
+      <workItem from="1607869472208" duration="93000" />
+      <workItem from="1608465478143" duration="20000" />
+      <workItem from="1608624639662" duration="25000" />
+      <workItem from="1608639379270" duration="44000" />
+      <workItem from="1608639516613" duration="678000" />
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="42" key="#Inspections" timestamp="1583860245747">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="275" y="42" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1583860245747" />
-    <state x="402" y="0" key="#autoMatch" timestamp="1588138999462">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="402" y="0" key="#autoMatch/0.0.1366.768@0.0.1366.768" timestamp="1588138999462" />
-    <state x="428" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588107000566">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="428" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1588107000566" />
-    <state x="432" y="220" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1584142566299">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="432" y="220" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1366.768@0.0.1366.768" timestamp="1584142566299" />
-    <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588103105299">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1588103105299" />
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom" timestamp="1588152083037">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
-    <state width="1345" height="192" key="GridCell.Tab.0.center" timestamp="1588152083037">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
-    <state width="1345" height="192" key="GridCell.Tab.0.left" timestamp="1588152083036">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1588152083036" />
-    <state width="1345" height="192" key="GridCell.Tab.0.right" timestamp="1588152083037">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1588152083037" />
-    <state width="1345" height="238" key="GridCell.Tab.1.bottom" timestamp="1584263339424">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state width="1345" height="238" key="GridCell.Tab.1.center" timestamp="1584263339424">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state width="1345" height="238" key="GridCell.Tab.1.left" timestamp="1584263339424">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state width="1345" height="238" key="GridCell.Tab.1.right" timestamp="1584263339424">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1345" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1584263339424" />
-    <state x="152" y="0" width="998" height="726" key="SettingsEditor" timestamp="1588139028154">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="152" y="0" width="998" height="726" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1588139028154" />
-    <state x="373" y="177" key="com.intellij.ide.util.TipDialog" timestamp="1588138982017">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="373" y="177" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1588138982017" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1584094669374">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1584094669374" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GST_Match_Assistant$autoMatch.coverage" NAME="autoMatch Coverage Results" MODIFIED="1608640185213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
+    <SUITE FILE_PATH="coverage/GST_Match_Assistant$doMatch.coverage" NAME="doMatch Coverage Results" MODIFIED="1608640074383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
   </component>
 </project>
