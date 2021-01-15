@@ -3,16 +3,15 @@ from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtWidgets import QDialog, QTableWidget, QTableWidgetItem, QApplication, QHBoxLayout, QMainWindow, \
     QPushButton, QVBoxLayout, QComboBox, QGridLayout, QLabel, QWidget, QLineEdit, QFileDialog, QMessageBox
 from PyQt5 import QtGui, QtCore
-# from PyQt5.QtGui import QIcon
 import pandas as pd
 import sys
 import os
+import logging
 
 
 class pair_label(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-
         self.first = QLabel()
         self.second = QLabel()
 
@@ -30,7 +29,6 @@ class show_details(QWidget):
     def init_ui(self):
         self.gstNo = pair_label()
         self.gstNo.first.setText("GSTNo :-")
-
 
         self.invoice_no = pair_label()
         self.invoice_no.first.setText("Invoice no. :-")
@@ -58,7 +56,6 @@ class show_details(QWidget):
         grid.addWidget(self.cgst, 2,1)
         grid.addWidget(self.igst, 3,0)
         grid.addWidget(self.sgst, 3,1)
-
 
         self.setLayout(grid)
 
@@ -115,7 +112,7 @@ class show_details(QWidget):
             self.set_sgst(dict_data['sgst'])
             self.set_igst(dict_data['igst'])
         except Exception as e:
-            print(str(e))
+            logging.info(str(e))
 
     # format of data
     # {
@@ -139,7 +136,7 @@ class show_details(QWidget):
                 'igst': self.get_igst()
             }
         except Exception as e:
-            print(str(e))
+            logging.error(str(e))
 
     def clear_data(self):
         self.set_gstno('')
@@ -216,13 +213,10 @@ class table_widget(QTableWidget):
                     match = True
                 self.setRowHidden(row, not match)
         except Exception as e:
-            print(str(e))
+            logging.error(str(e))
 
     def get_data(self):
         return self.data
-
-
-
 
 class Input(QDialog):
     send_filePath = QtCore.pyqtSignal(str)
@@ -252,11 +246,11 @@ class Input(QDialog):
         try:
             # print("reading " + self.file1Path)
             file1 = pd.ExcelFile(self.filePath)
-            # self.success_status("{} file is OK".format(self.file1Path))
+            logging.info("{} file is OK".format(self.filePath))
 
             return file1
         except Exception as e:
-            # self.failure_status(str(e))
+            logging.error(str(e))
             self.filePath=None
             self.startLineEdit.clear()
             return None
@@ -306,7 +300,7 @@ class do_match_gui(QWidget):
         self.match_store = []
 
         self.filePath = None
-        self.Excel: pd.ExcelFile= None
+        self.Excel: pd.ExcelFile = None
 
         self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -329,7 +323,7 @@ class do_match_gui(QWidget):
             if self.load_data(mySide_data, otherSide_data):
                 self.fill_data()
         except Exception as e:
-            print(str(e))
+            logging.error(str(e))
             self.input_window()
 
 
@@ -340,19 +334,19 @@ class do_match_gui(QWidget):
             self.match_btn.setEnabled(True)
 
     def mySide_item_clicked(self, row, col):
-        print(row, col)
+        # print(row, col)
         data = self.mySide.select_rows(row)
         self.selected_mySide = pd.Series(data)
         write_data = {}
         for to, frm in zip(self.write_cols, self.read_cols_mySide):
             write_data[to] = data[frm]
-        print(write_data)
+        # print(write_data)
         self.left_side.set_data(write_data)
         self.match_btn_enable()
 
 
     def otherSide_item_clicked(self, row, col):
-        print(row, col)
+        # print(row, col)
         data = self.otherSide.select_rows(row)
         self.selected_otherSide = pd.Series(data)
         write_data = {}
@@ -383,6 +377,7 @@ class do_match_gui(QWidget):
     def load_data(self, first:pd.DataFrame=None, second:pd.DataFrame=None):
         if not (first.empty or second.empty):
             self.mySide_data, self.otherSide_data = first, second
+            # logging.info()
             del self.mySide_data['Unnamed: 0']
             del self.otherSide_data['Unnamed: 0']
             return True
@@ -403,7 +398,7 @@ class do_match_gui(QWidget):
             del self.selected_mySide["GSTno."]
             data = self.selected_mySide.append(self.selected_otherSide)
             self.match_store.append(data)
-            # Make selecteddata Null
+            # Make selected data Null
             self.selected_mySide = self.selected_otherSide = pd.Series(dtype=float)
             # clearing show_details widgets
             self.left_side.clear_data()
@@ -414,7 +409,7 @@ class do_match_gui(QWidget):
             # making match_btn disable
             self.match_btn_enable()
         except Exception as e:
-            print(str(e))
+            logging.error(str(e))
 
     def match_work(self):
         try:
@@ -430,7 +425,7 @@ class do_match_gui(QWidget):
                     if reply == QMessageBox.Yes:
                         self.finalize_match()
         except Exception as ve:
-            print(str(ve))
+            logging.error(str(ve))
 
     def save_work(self):
         if self.match_store!=[]:
@@ -451,7 +446,7 @@ class do_match_gui(QWidget):
 
     def init_ui(self):
         scriptDir = os.path.dirname(os.path.realpath(__file__))
-        print(scriptDir)
+        # print(scriptDir)
         self.setWindowTitle("Manual Match")
         self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + "assets/icons/window.png"))
 
@@ -546,8 +541,8 @@ class do_match_gui(QWidget):
     def write_Result_to_excel(self):
         try:
             # Creating excel writer
-            print("Writting results")
-            print(self.filePath)
+            logging.info("Writting results")
+            # print(self.filePath)
             outFileWriter = pd.ExcelWriter(self.filePath, engine='xlsxwriter')
 
             prev_matched = pd.read_excel(self.Excel, sheet_name='Matched Data')
@@ -566,13 +561,15 @@ class do_match_gui(QWidget):
             self.match_store=[]
             # print("DONE")
         except Exception as e:
-            print(str(e))
+            logging.error(str(e))
 
 
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    # Logging settings
+    logging.basicConfig(filename="assets/log/DoMatch_Log.txt", level=logging.INFO, format="%(asctime)s : %(levelname)s : %(lineno)d : %(message)s")
 
     main = do_match_gui()
 

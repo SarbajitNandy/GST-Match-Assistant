@@ -7,10 +7,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QThread;
 
+import logging
+
 
 class Purchase_Sales_Match(object):
     compiledExp = re.compile('/[A-Z]*[0-9]+[A-Z]*/')
-    check = ["1920", '2020', '2019']
+    check = ["1920", '2020', '2019', '2021']
 
     def __int__(self):
         # Details of file 1
@@ -50,6 +52,10 @@ class Purchase_Sales_Match(object):
     def validation(n):
         return n and not (n == '')
 
+    '''
+    Objective : takes an list of string, remove all values with 'Unnamed' word, then join rest of the part 
+    Example   : ['Vouchar','Unnamed','Number']  ---->  ['Vouchar Number'] 
+    '''
     @staticmethod
     def join(i):
         si = list(i)
@@ -60,6 +66,9 @@ class Purchase_Sales_Match(object):
 
         return " ".join(si)
 
+    '''
+    Not in use , to be documented later
+    '''
     @staticmethod
     def makeInt(n):
 
@@ -72,6 +81,9 @@ class Purchase_Sales_Match(object):
 
         return list(map(sanit, n))
 
+    '''
+    Not in use , to be documented later
+    '''
     @staticmethod
     def spl(i):
         i = str(i)
@@ -93,8 +105,14 @@ class Purchase_Sales_Match(object):
                     return str(max(list(map(int, val))))
                 except:
                     return i
-            return  i
+            return i
 
+    '''
+    This method compares same columns of two sides of data
+    for emample, 
+    1. takes a rows from purchase side, and another row from sales side
+    2. compares between their values on cgst column
+    '''
     @staticmethod
     def float_compare(a, b):
         a, b = round(float(a)), round(float(b))
@@ -106,6 +124,11 @@ class Purchase_Sales_Match(object):
             else:
                 return False
 
+    '''
+    Objective : converts two row header into single row
+    Example   : 1. sample data : [['Purchase','data'],['Voucher','No.']] ---> ['Purchase data', 'Vouchar No.'] 
+    Dependency: Make use of join method which resolves the merging work
+    '''
     def format_header(self):
         try:
             mv, gv = self.myVouchar.keys(), self.givenVouchar.keys()
@@ -113,10 +136,16 @@ class Purchase_Sales_Match(object):
                  for i in mv]
             g = [self.join(i)
                  for i in gv]
+            logging.info("Head format successful")
             return (m, g)
         except:
+            logging.error("Wrong header format")
             raise MsgException("Wrong Header format")
 
+    '''
+    Objective : filtering out not-required columns from purchase and sales voucher sheet
+    Dependency: make use of mycols and gvcols mentioned  in the constructor  
+    '''
     def data_sanit(self):
         mvNew, gvNew = self.myVouchar.keys(), self.givenVouchar.keys()
         for i in mvNew:
@@ -128,7 +157,9 @@ class Purchase_Sales_Match(object):
                 del self.givenVouchar[i]
         return
 
-
+    '''
+    Objective : self-explanetory function name
+    '''
     @staticmethod
     def make_int_if_possible(invoice):
         try:
@@ -136,6 +167,10 @@ class Purchase_Sales_Match(object):
         except:
             return str(invoice)
 
+    '''
+    Objective : Format all the Invoice values and store them into new columns 
+    Output    : Prepare a match report 
+    '''
     def format_invoice(self):
         matching_excel = {}
 
@@ -145,8 +180,14 @@ class Purchase_Sales_Match(object):
         # self.myVouchar["Invoice"] = self.myVouchar["Invoice No."].copy()
         # self.givenVouchar["Invoice"] = self.givenVouchar["Invoice details Invoice number"].copy()
 
+        '''
+        Objective : These two methods converts all invoice number into integer if possible
+        Example   : '1234' --> 1234 |  '12/21/2020' --> '12/21/2020' (can't be converted into Integer)
+        '''
         self.myVouchar["Invoice"] = [ Purchase_Sales_Match.make_int_if_possible(item) for item in self.myVouchar["Invoice No."]]
         self.givenVouchar["Invoice"] = [ Purchase_Sales_Match.make_int_if_possible(item) for item in self.givenVouchar["Invoice details Invoice number"]]
+
+        logging.info("Purchase side and Sales side invoice numbers have been formatted")
 
         # for item in self.myVouchar['Invoice']:
         #     print(item.__str__())
@@ -154,6 +195,9 @@ class Purchase_Sales_Match(object):
         # for item in self.givenVouchar['Invoice']:
         #     print(item.__str__())
 
+        '''
+        Objective : Shows both values for 'before sanitization' and 'after sanitization' side by side 
+        '''
         matching_excel['Invoice']  = self.myVouchar["Invoice No."].append(self.givenVouchar["Invoice details Invoice number"])
         matching_excel['Sanitized Data'] = self.myVouchar["Invoice"].append(self.givenVouchar["Invoice"])
 
@@ -167,37 +211,35 @@ class Purchase_Sales_Match(object):
         # self.givenVouchar['Tax Amount Central Tax (₹)'] = self.givenVouchar['Tax Amount Central Tax (₹)'].astype(float)
         # self.givenVouchar['Tax Amount State/UT tax (₹)'] = self.givenVouchar['Tax Amount State/UT tax (₹)'].astype(float)
 
+        purchaseSideCols = [
+                'Taxable Value',
+                'Integrated Tax Amount',
+                'Central Tax Amount',
+                'State Tax Amount'
+            ]
+
         self.myVouchar[
-            [
-                'Taxable Value',
-                'Integrated Tax Amount',
-                'Central Tax Amount',
-                'State Tax Amount'
-            ]
+            purchaseSideCols
         ] = self.myVouchar[
-            [
-                'Taxable Value',
-                'Integrated Tax Amount',
-                'Central Tax Amount',
-                'State Tax Amount'
-            ]
+            purchaseSideCols
         ].astype(float)
 
+        logging.info("Convertion to float process on Purchase side Column:{} succeed".format(purchaseSideCols))
+
+        salesSideCols = [
+                'Taxable Value (₹)',
+                'Tax Amount Integrated Tax  (₹)',
+                'Tax Amount Central Tax (₹)',
+                'Tax Amount State/UT tax (₹)'
+            ]
+
         self.givenVouchar[
-            [
-                'Taxable Value (₹)',
-                'Tax Amount Integrated Tax  (₹)',
-                'Tax Amount Central Tax (₹)',
-                'Tax Amount State/UT tax (₹)'
-            ]
+            salesSideCols
         ] = self.givenVouchar[
-            [
-                'Taxable Value (₹)',
-                'Tax Amount Integrated Tax  (₹)',
-                'Tax Amount Central Tax (₹)',
-                'Tax Amount State/UT tax (₹)'
-            ]
+            salesSideCols
         ].astype(float)
+
+        logging.info("Convertion to float process on Sales side Column:{} succeed".format(salesSideCols))
 
     def check_positive(self,data,cols=[]):
         for i in cols:
@@ -205,6 +247,9 @@ class Purchase_Sales_Match(object):
                 return False
         return True
 
+    '''
+    Objective : Marks all the positive taxable values as "Debit" and negetive taxable values as "Credit"
+    '''
     def format_type(self):
         self.convert_to_float()
         mv = []
@@ -221,23 +266,35 @@ class Purchase_Sales_Match(object):
             'Tax Amount Central Tax (₹)',
             'Tax Amount State/UT tax (₹)'
         ]
+        mySideDebitCreditCount = [0,0]
         for i, row in self.myVouchar.iterrows():
             if self.check_positive(row, mvCols):
                 mv.append('d')
+                mySideDebitCreditCount[0] += 1
             else:
                 mv.append('c')
+                mySideDebitCreditCount[1] += 1
+        logging.info("Debit-Credit Count on Purchase side: {}".format(mySideDebitCreditCount))
 
+        otherSideDebitCreditCount = [0, 0]
         for i, row in self.givenVouchar.iterrows():
             if self.check_positive(row, gvCols):
                 gv.append('d')
+                otherSideDebitCreditCount[0]+=1
             else:
                 gv.append('c')
+                otherSideDebitCreditCount[1]+=1
+
+        logging.info("Debit-Credit Count on Sales side: {}".format(otherSideDebitCreditCount))
         self.myVouchar['type'] = mv
         self.givenVouchar['type'] = gv
 
-
+    '''
+    Objective : Combine multiple bills with same Gst no, Invoice Number, and type (Credit or Debit) into a single bills by summing up their values
+    '''
     def combine_bill_mySide(self):
         # Combine separate bills in GST side
+        initialLength = len(self.myVouchar)
         newVouchar = self.myVouchar.groupby(['GSTno.', 'Invoice', 'type'])[
             [
                 'Taxable Value',
@@ -246,14 +303,19 @@ class Purchase_Sales_Match(object):
                 'State Tax Amount'
             ]
         ].transform('sum')
-
+        logging.info("Number of duplicate rows found on Purchase Side: {}".format(len(newVouchar) - initialLength))
         for i in newVouchar.keys():
             self.myVouchar[i] = newVouchar[i]
 
         self.myVouchar = self.myVouchar.drop_duplicates(subset=['GSTno.', 'Invoice', 'type'])
+        logging.info("Duplicates dropped successfully")
 
+    '''
+    Objective : Combine multiple bills with same Gst no, Invoice Number, and type (Credit or Debit) into a single bills by summing up their values
+    '''
     def combine_bill_otherSide(self):
         # Combine separate bills in GST side
+        initialLength = len(self.givenVouchar)
         newVouchar = self.givenVouchar.groupby(['GSTno.', 'Invoice', 'type'])[
             [
                 'Taxable Value (₹)',
@@ -262,36 +324,45 @@ class Purchase_Sales_Match(object):
                 'Tax Amount State/UT tax (₹)'
             ]
         ].transform('sum')
-
+        logging.info("Number of duplicate rows found on Sales Side: {}".format(len(newVouchar)-initialLength))
         for i in newVouchar.keys():
             self.givenVouchar[i] = newVouchar[i]
 
         self.givenVouchar = self.givenVouchar.drop_duplicates(subset=['GSTno.', 'Invoice', 'type'])
+        logging.info("Duplicates dropped successfully")
 
-
+    '''
+    Objective : write changes to Excel file
+    '''
     def write_Result_to_excel(self):
         # Creating excel writer
         if self.Done_with_match:
-            print("Writting results")
+            logging.info("Writting results")
             print(self.outFilePath)
             outFileWriter = pd.ExcelWriter(self.outFilePath, engine='xlsxwriter')
 
             #delete types in match_details
             if not self.MatchedDetails.empty:
                 del self.MatchedDetails['type']
+                logging.info("Matched details not empty, Type column deleted")
 
             # write into a file
             self.mergedData.to_excel(outFileWriter, sheet_name='All Data')
+            logging.info("changes in Merged data written")
             self.MatchedDetails.to_excel(outFileWriter, sheet_name="Matched Data")
+            logging.info("changes in Matched Details written")
             self.notMatched_myside.to_excel(outFileWriter, sheet_name="My Side")
+            logging.info("changes in Unmatched Data on Purchase side written")
             self.notMatched_otherside.to_excel(outFileWriter, sheet_name="GST portal")
+            logging.info("changes in Unmatched Data on Sales side written")
             self.match_report.to_excel(outFileWriter, sheet_name="Sanit of Invoice Report")
+            logging.info("changes in Match Report written")
             self.givenVouchar.to_excel(outFileWriter, sheet_name="new sales")
             outFileWriter.save()
             # print("DONE")
 
         else:
-            print("Writter is not ready")
+            logging.info("Writter is not ready")
 
 
 class ExcelReadException(Exception):
@@ -474,18 +545,21 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
 #     Fail-safe status
     def normal_status(self, n: str):
+        logging.info(n)
         html = """
            <span>{}</span>
         """
         self.statusView.append(html.format(n))
 
     def success_status(self, n: str):
+        logging.info(n)
         html = """
             <span style="color: green">{}</span>
         """
         self.statusView.append(html.format(n))
 
     def failure_status(self, n: str):
+        logging.error(n)
         html = """
             <span style="color: red">{0}</span>
         """
@@ -494,6 +568,7 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
     def open_dialog_box(self):
         fileName = QFileDialog.getOpenFileName()
+        logging.info("dialog box opened")
         return fileName[0]
 
     def click(self):
@@ -510,10 +585,10 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
         self.givenExcel = self.read_file2()
 
     def run(self):
-        print("run process")
+        logging.info("Process started")
         # self.statusView.clear()
         self.main()
-        print("run finished")
+        logging.info("Process finished")
 
     @staticmethod
     def check_cronic(n):
@@ -533,6 +608,7 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
         try:
             self.outFilePath = '/'.join(self.file1Path.split("/")[0:-1]) + '/mergedFile.xlsx'
+            logging.info("Output file: " + self.outFilePath)
             header1 = self.headerLineFile1.text()
             header2 = self.headerLineFile2.text()
             # self.file1Sheet = self.sheetName1.text().strip()
@@ -540,7 +616,9 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
             self.file1Sheet = self.file1SheetName.currentText()
             self.file2Sheet = self.file2SheetName.currentText()
 
-            if (header1=='' or header2==''): raise MsgException("Header contains nothing")
+            if (header1=='' or header2==''):
+                logging.error("Header contains nothing")
+                raise MsgException("Header contains nothing")
 
             self.file1Header = getPoint(list(map(int, header1.strip().split(','))))
             self.file2Header = getPoint(list(map(int, header2.strip().split(','))))
@@ -574,6 +652,7 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
             return file1
         except Exception as e:
             self.failure_status(str(e))
+            logging.error("Can't read excel file " + self.file1Path)
             self.file1Path=None
             self.lineFile1.clear()
             self.file1SheetName.clear()
@@ -591,6 +670,7 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
             return file2
         except Exception as e:
             self.failure_status(str(e))
+            logging.error("Can't read excel file " + self.file2Path)
             self.file2Path = None
             self.lineFile2.clear()
             self.file2SheetName.clear()
@@ -673,6 +753,7 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
                 self.normal_status("Reading {}".format(self.file1Path))
                 self.myVouchar = pd.read_excel(self.myExcel, self.file1Sheet, header=self.file1Header).fillna(0)
                 self.success_status("file read successful, format OK")
+
             else:
                 # raise exception
                 raise ExcelReadException(self.file1Path)
@@ -770,6 +851,9 @@ class Ui_MainWindow(Purchase_Sales_Match, QThread):
 
 if __name__ == "__main__":
     import sys
+
+    logging.basicConfig(filename="assets/log/AutoMatch_Log.txt", level=logging.INFO, format="%(asctime)s : %(levelname)s : %(lineno)d : %(message)s")
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

@@ -9,6 +9,8 @@ numpy = "*"
 pyqt5 = "*"
 pandas = "*"
 pyqt5-stubs = "==5.14.2.2"
+openpyxl = "*"
+xlrd = "*"
 
 [dev-packages]
 

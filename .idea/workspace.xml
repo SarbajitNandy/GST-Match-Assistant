@@ -3,30 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4268bf89-dd4a-4e60-aedc-b3d0e9ef0833" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TallyProject.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/DoMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/ShowDetailsWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/addSheetDetails.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/addSheetDetails.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/backEnd_COPY.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/backEnd_COPY.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/gui_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/gui_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/old_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/old_GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/tableWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/GUI/tableWidget.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/GUI/tableWidget.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/autoMatch.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/autoMatch.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/doMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/doMatch.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/doMatch.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/testPanda.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/testPanda.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +29,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.autoMatch">
+  <component name="RunManager" selected="Python.doMatch">
     <configuration name="autoMatch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GST-Match-Assistant" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,8 +84,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.autoMatch" />
         <item itemvalue="Python.doMatch" />
+        <item itemvalue="Python.autoMatch" />
       </list>
     </recent_temporary>
   </component>
@@ -120,6 +107,11 @@
       <workItem from="1608624639662" duration="25000" />
       <workItem from="1608639379270" duration="44000" />
       <workItem from="1608639516613" duration="678000" />
+      <workItem from="1608952578740" duration="488000" />
+      <workItem from="1609349940557" duration="22000" />
+      <workItem from="1610687586859" duration="13730000" />
+      <workItem from="1610719580922" duration="848000" />
+      <workItem from="1610730030724" duration="3158000" />
     </task>
     <servers />
   </component>
@@ -139,7 +131,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GST_Match_Assistant$autoMatch.coverage" NAME="autoMatch Coverage Results" MODIFIED="1608640185213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
-    <SUITE FILE_PATH="coverage/GST_Match_Assistant$doMatch.coverage" NAME="doMatch Coverage Results" MODIFIED="1608640074383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
+    <SUITE FILE_PATH="coverage/GST_Match_Assistant$autoMatch.coverage" NAME="autoMatch Coverage Results" MODIFIED="1610732552860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
+    <SUITE FILE_PATH="coverage/GST_Match_Assistant$doMatch.coverage" NAME="doMatch Coverage Results" MODIFIED="1610732642869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
   </component>
 </project>

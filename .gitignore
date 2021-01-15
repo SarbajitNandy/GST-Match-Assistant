@@ -4,5 +4,6 @@ Scripts/dist/
 Scripts/GUI/build/
 Scripts/GUI/dist/
 
+Scripts/assets/log/
 
 .idea/
