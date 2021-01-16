@@ -1,9 +1,9 @@
 */__pycache__/
-Scripts/build/
-Scripts/dist/
-Scripts/GUI/build/
-Scripts/GUI/dist/
+src/build/
+src/dist/
+src/GUI/build/
+src/GUI/dist/
 
-Scripts/assets/log/
+src/assets/log/
 
 .idea/
